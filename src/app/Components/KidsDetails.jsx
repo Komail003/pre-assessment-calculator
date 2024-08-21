@@ -175,7 +175,7 @@ function KidsDetails(props) {
                                       tabIndex={1000}
                                       popperPlacement={placement}
                                       dropdownMode="select"
-                                      // wrapperClassName="w-100"
+                                      wrapperClassName="w-100"
                                       // popperModifiers={[
                                       //   {
                                       //    name: "preventOverflow",

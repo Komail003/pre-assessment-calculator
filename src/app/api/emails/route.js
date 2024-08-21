@@ -38,7 +38,7 @@ export async function POST(req) {
       text,
       attachments: [
         {
-          filename: 'Your Pre-Assessment Report.pdf',
+          filename: 'Your Pre-Assessment Calculator Report.pdf',
           content: base64PDF.split('base64,')[1],
           encoding: 'base64',
         },
