@@ -122,7 +122,7 @@ const WithNavigation = ({ children }) => {
         <div className="navigation-buttons text-center my-5">
           {BackShow && (
             <button
-              className="btn btn-secondary px-5 py-2 me-5"
+              className="btn btn-secondary me-5"
               onClick={prevStep}
             >
               <FaArrowLeftLong className="me-2"/>
@@ -130,13 +130,13 @@ const WithNavigation = ({ children }) => {
             </button>
           )}
           <button
-            className="btn btn-success px-5 py-2"
+            className="btn btn-success"
             onClick={nextStep}
             type="button"
             disabled={step === children.length}
           >
             {flag == true ? "Submit" : "Next"}
-            <FaArrowRightLong className="ms-2"/>
+            <FaArrowRightLong className="ms-2 d-inline"/>
           </button>
         </div>
         <PdfTables />

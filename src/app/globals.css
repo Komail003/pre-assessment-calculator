@@ -170,6 +170,20 @@ input[type="number"] {
 .svgs {
   width: 25%;
 }
+.btn{
+  padding-left: 45px !important;
+  padding-right: 45px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+@media only screen and (max-width: 375px) {
+  .btn{
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+}
 @media only screen and (max-width: 768px) {
   .svgs {
     width: 50%;
