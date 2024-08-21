@@ -473,7 +473,7 @@ function OtherIncome(props) {
     console.log("email sender",formData);
     let Data = JSON.stringify({
       to: formData.email,
-      subject: `Pre-Assessment-Calculator-${formData.preferredName}`,
+      subject: `Pre-Assessment Calculator Report (${formData.preferredName})`,
       text: "Please find the attached PDF document.",
       base64PDF,
     });

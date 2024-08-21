@@ -131,7 +131,7 @@ function PropertyDetails(props) {
                         Loan Balance
                       </label>
                       <Field
-                        className="form-control w-75 mx-auto"
+                        className="form-control w-75 mx-auto mt-2"
                         id="loanBalance"
                         name="loanBalance"
                         placeholder="Please Enter Value in $"
@@ -150,7 +150,7 @@ function PropertyDetails(props) {
                         Loan Repayments
                       </label>
                       <Field
-                        className="form-control w-75 mx-auto"
+                        className="form-control w-75 mx-auto mt-2"
                         id="rentReceived"
                         name="rentReceived"
                         placeholder="Please Enter Value in $"
@@ -169,7 +169,7 @@ function PropertyDetails(props) {
                         Frequency of Repayments
                       </label>
                       <Field
-                        className="form-select w-75 mx-auto mt-3"
+                        className="form-select w-75 mx-auto mt-2"
                         id="rentOptions"
                         name="rentOptions"
                         as="select"

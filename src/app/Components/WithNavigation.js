@@ -5,6 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import PdfTables from "./PdfTables";
 import { RecoilRoot } from "recoil";
 import ProgressBar from "./ProgressBar/ProgressBar";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 const WithNavigation = ({ children }) => {
   const [step, setStep] = useState(0);
@@ -106,9 +107,11 @@ const WithNavigation = ({ children }) => {
 
   return (
     <RecoilRoot>
-      <div>
-        <div className="mt-3 mx-5 px-5">
+      <div className="container-fluid p-0 m-0 pt-4">
+        <div className="d-flex justify-content-center" >
+          <div className="col-9">
           <ProgressBar progress={progress} />
+          </div>
         </div>
         {children
           ? React.cloneElement(children, {
@@ -122,6 +125,7 @@ const WithNavigation = ({ children }) => {
               className="btn btn-secondary px-5 py-2 me-5"
               onClick={prevStep}
             >
+              <FaArrowLeftLong className="me-2"/>
               Back
             </button>
           )}
@@ -132,6 +136,7 @@ const WithNavigation = ({ children }) => {
             disabled={step === children.length}
           >
             {flag == true ? "Submit" : "Next"}
+            <FaArrowRightLong className="ms-2"/>
           </button>
         </div>
         <PdfTables />

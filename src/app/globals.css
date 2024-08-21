@@ -148,10 +148,10 @@ input[type="number"] {
 
 .tooltip-inner {
   max-width: 250px !important;
-  padding: 0.5rem !important;
   /* text-align: justify !important; */
 }
 .tooltip-inner span {
+  padding: 0.5rem !important;
   text-align: justify !important;
 }
 

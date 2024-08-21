@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { childrenDetailsState } from "../Atom";
 import DatePicker from "react-datepicker";
@@ -12,6 +12,25 @@ function KidsDetails(props) {
   const [childrenDetails, setChildrenDetails] =
     useRecoilState(childrenDetailsState);
   const children = [1, 2, 3, 4, 5];
+  const [placement, setPlacement] = useState('bottom');
+
+  useEffect(() => {
+    const updatePlacement = () => {
+      if (window.innerWidth <= 768) {
+        setPlacement('right');
+      } else {
+        setPlacement('bottom');
+      }
+    };
+     // Set initial placement
+     updatePlacement();
+
+     // Update placement on window resize
+     window.addEventListener('resize', updatePlacement);
+ 
+     // Cleanup on component unmount
+     return () => window.removeEventListener('resize', updatePlacement);
+   }, []);
 
   const initialValues = {
     anyKids: childrenDetails.anyKids,
@@ -110,7 +129,7 @@ function KidsDetails(props) {
                 <div className="row mt-5">
                   <div className="col-md-2"></div>
                   <div className="col-md-8">
-                    <div className="table-responsive">
+                    <div className="">
                       <table className="table table-bordered table-hover">
                         <thead className="text-center">
                           <tr>
@@ -150,21 +169,19 @@ function KidsDetails(props) {
                                       autoComplete="off"
                                       onBlur={handleBlur}
                                       name={`dOB${child}`}
-                                      autocomplete="off"
+                                      
                                       maxDate={new Date()}
                                       showMonthDropdown
                                       tabIndex={1000}
+                                      popperPlacement={placement}
                                       dropdownMode="select"
-                                      wrapperClassName="w-100"
-                                      popperPlacement="right"
-                                      popperModifiers={[
-                                        {
-                                          name: "flip",
-                                          options: {
-                                            fallbackPlacements: ["bottom"],
-                                          },
-                                        },
-                                      ]}
+                                      // wrapperClassName="w-100"
+                                      // popperModifiers={[
+                                      //   {
+                                      //    name: "preventOverflow",
+                                      //    enabled: true,
+                                      //   }
+                                      //  ]}
                                       style={{
                                         width: "100%", // Ensure the input takes the full width of its container
                                       }}
