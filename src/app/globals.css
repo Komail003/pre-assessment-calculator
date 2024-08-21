@@ -1,0 +1,247 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  /* font-family: "Montserrat", sans-serif !important; */
+  font-family: "Poppins", sans-serif !important;
+}
+
+.form-control {
+  border: 2px solid #36b446 !important;
+  box-shadow: none !important;
+  padding: 8px 8px 8px 8px !important;
+  border-radius: 0px !important;
+  /* background-color: red !important; */
+}
+.form-select {
+  border-radius: 0px !important;
+  border: 2px solid #36b446 !important;
+  box-shadow: none !important;
+}
+label,
+h6 {
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  padding-top: 10px;
+}
+.radiobutton {
+  background-color: white;
+  height: 35px;
+  width: 150px;
+  position: absolute;
+  /* border-radius: 10px; */
+  overflow: hidden;
+  border: 1px solid #36b446;
+  cursor: pointer;
+
+  /* box-shadow: 2px 2px 8px -2px #36B446; */
+}
+.radiobutton1 {
+  background-color: white;
+  height: 35px;
+  width: 75px;
+  position: absolute;
+  /* border-radius: 10px; */
+  overflow: hidden;
+  border: 1px solid #36b446;
+  cursor: pointer;
+
+  /* box-shadow: 2px 2px 8px -2px #36B446; */
+}
+.form-check {
+  display: flex !important;
+  min-height: 1.5rem;
+  padding-left: 1.5em;
+  margin-bottom: 0.125rem;
+  justify-content: center;
+}
+.label1,
+.label2 {
+  display: block;
+  height: 180px;
+  width: 75px;
+  background: linear-gradient(
+    to bottom,
+    white 0,
+    white 90px,
+    #36b446 90px,
+    #36b446 180px
+  );
+  position: absolute;
+  top: 0;
+  color: #36b446;
+  transition: 0.5s;
+  cursor: pointer;
+  padding: 0% !important;
+}
+.label2 span,
+.label1 span {
+  margin-top: 5px !important;
+  font-weight: 500 !important;
+}
+.label2 {
+  right: 0;
+}
+input:checked + label {
+  background-position: 0 -90px;
+  color: white;
+  transition: 0.7s;
+}
+
+.Center {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+.Green {
+  color: #36b446 !important;
+}
+
+.customBorder {
+  border: 2px solid #36b446;
+  background-color: #36b44f10;
+}
+
+.position-relative {
+  width: 33%;
+}
+
+.btn-success {
+  background-color: #36b446 !important;
+  border: 1px solid #36b446 !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.container-fluid {
+  height: max-content;
+}
+.mobilePartnerForm {
+  display: none;
+}
+.largeScrnPartnerForm {
+  display: block;
+}
+.businessimg {
+  width: 95px !important;
+  height: 100px;
+}
+.businessimg1 {
+  width: 95px !important;
+  height: 95px;
+}
+
+.tdmbl {
+  width: 25% !important;
+}
+.onMobile {
+  width: 50%;
+}
+
+.tooltip-inner {
+  max-width: 250px !important;
+  padding: 0.5rem !important;
+  /* text-align: justify !important; */
+}
+.tooltip-inner span {
+  text-align: justify !important;
+}
+
+.CalenderParent {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.CalenderIcon {
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  pointerevents: none;
+  color: #36b446;
+}
+.svgs {
+  width: 25%;
+}
+@media only screen and (max-width: 768px) {
+  .svgs {
+    width: 50%;
+  }
+  .businessimg {
+    width: 75px !important;
+    height: 75px !important;
+  }
+  .businessimg1 {
+    width: 85px !important;
+    height: 85px !important;
+  }
+  .form-control {
+    margin-top: 20px;
+    /* margin-bottom: 15px; */
+  }
+  .navigation-buttons {
+    display: flex;
+    justify-content: center;
+  }
+  .mobilePartnerForm {
+    display: block;
+  }
+  .largeScrnPartnerForm {
+    display: none;
+  }
+  .onMobile {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px !important;
+    width: 100%;
+  }
+  .tdmbl {
+    width: 40% !important;
+    padding-top: 30%;
+  }
+  .Calendar {
+    margin-top: 12%;
+  }
+  .radioButton2 {
+    margin-top: 20px !important;
+  }
+  .CalenderIcon {
+    position: absolute;
+    top: 33px !important;
+    right: 10px;
+    pointerevents: none;
+    color: #36b446;
+  }
+  .label2 span,
+  .label1 span {
+    margin-top: 5px !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+  }
+  .query{
+    padding: -100% !important;
+    /* text-align: start !important; */
+  }
+}
+
+.CoupleSelected {
+  height: 45px;
+  width: 100%;
+  position: relative; /* Changed from absolute to relative */
+  overflow: hidden;
+  /* border: 1px solid #36b446 !important; */
+  background-color: #36b446;
+  color: white;
+  font-weight: 500 !important;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
