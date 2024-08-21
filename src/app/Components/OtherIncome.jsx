@@ -507,7 +507,7 @@ function OtherIncome(props) {
     // router.push('../HomeDetails');
     await getBase64PDF();
   
-    // window.sessionStorage.clear();
+    window.sessionStorage.clear();
     // props.handleStepChange();
   };
 
