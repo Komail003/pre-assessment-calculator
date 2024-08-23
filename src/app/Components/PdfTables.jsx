@@ -457,10 +457,18 @@ const PdfTables = () => {
                 <td colSpan="2">No Credit card details available</td>
               </tr>
             ) : (
-              <tr>
-                <td>{toCommaAndDollar(personalAssets.creditCards) || ""}</td>
-                <td>{toCommaAndDollar(personalAssets.partnerCredit) || ""}</td>
-              </tr>
+              <>
+                <tr>
+                  <td>Client</td>
+                  <td>Partner</td>
+                </tr>
+                <tr>
+                  <td>{toCommaAndDollar(personalAssets.creditCards) || ""}</td>
+                  <td>
+                    {toCommaAndDollar(personalAssets.partnerCredit) || ""}
+                  </td>
+                </tr>
+              </>
             )}
           </tbody>
         </table>
@@ -481,12 +489,18 @@ const PdfTables = () => {
                 <td colSpan="2">No Personal loan details available</td>
               </tr>
             ) : (
-              <tr>
-                <td>{toCommaAndDollar(personalAssets.personelLoan || "")}</td>
-                <td>
-                  {toCommaAndDollar(personalAssets.partnerPersonelLoan || "")}
-                </td>
-              </tr>
+              <>
+                <tr>
+                  <td>Client</td>
+                  <td>Partner</td>
+                </tr>
+                <tr>
+                  <td>{toCommaAndDollar(personalAssets.personelLoan || "")}</td>
+                  <td>
+                    {toCommaAndDollar(personalAssets.partnerPersonelLoan || "")}
+                  </td>
+                </tr>
+              </>
             )}
           </tbody>
         </table>

@@ -1,12 +1,12 @@
 // app/PersonalData/page.jsx
 "use client";
-import OtherIncome from '../Components/OtherIncome';
+import AreaOfAdvice from '../Components/AreaOfAdvice';
 import WithNavigation from '../Components/WithNavigation';
 
 export default function PersonalDataPage() {
     return (
         <WithNavigation>
-            <OtherIncome />
+            <AreaOfAdvice />
         </WithNavigation>
     );
 }

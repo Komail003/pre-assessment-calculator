@@ -123,9 +123,9 @@ function PropertyDetails(props) {
                         type="text"
                       />
 
-                      <h3 className="text-center mt-4">Loan Details</h3>
+                      <h3 className="text-center mt-3">Loan Details</h3>
                       <label
-                        className="text-center Center mt-4"
+                        className="text-center Center mt-2"
                         htmlFor="loanBalance"
                       >
                         Loan Balance

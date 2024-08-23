@@ -17,6 +17,8 @@ import DynamicYesNo from "./DynamicYesNo/DynamicYesNo";
 import { useRouter, usePathname } from "next/navigation";
 
 function PersonalData(props) {
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+  const [renderBtn, setRenderBtn] = useState(false);
   const [formData, setFormData] = useRecoilState(personalDataState); // Using Recoil state
   // const [selectedDate, setSelectedDate] = useState(null);
 
@@ -24,6 +26,28 @@ function PersonalData(props) {
   // const validationSchema = Yup.object({
   //   firstName: Yup.string().required("it is Requiresd"),
   // });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial size
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (windowWidth < 768) {
+      // alert('Screen size is below 768 pixels!');
+      setRenderBtn(true);
+    }else{
+      setRenderBtn(false);
+
+    }
+  }, [windowWidth]);
+
   const initialValues = {
     relationShipStatus: "single",
     partnerRelationShipStatus: "couple",
@@ -40,45 +64,50 @@ function PersonalData(props) {
     phoneNumber: "",
     partnerPhoneNumber: "",
     occupation: "",
+    gender: "Female",
+    partnerGender: "Female",
     partnerOccupation: "",
   };
   const router = useRouter();
 
   const onSubmit = (values) => {
     // console.log(values);
-let Obj={};
-if(values.relationShipStatus== "single"){
-  Obj={
-   relationShipStatus: values.relationShipStatus||"",
-     firstName: values.firstName||"",
-     surName: values.surName||"",
-     preferredName: values.preferredName||"",
-     DOB: values.DOB||"",
-     email: values.email||"",
-     phoneNumber: values.phoneNumber||"",
-     occupation: values.occupation||"",
- }
-}else{
-  Obj={
-    relationShipStatus:values.relationShipStatus||"",
-    partnerRelationShipStatus:values.partnerRelationShipStatus||"",
-    firstName:values.firstName||"",
-    partnerFirstName:values.partnerFirstName||"",
-    surName:values.surName||"",
-    partnerSurName:values.partnerSurName||"",
-    preferredName:values.preferredName||"",
-    partnerPreferredName:values.partnerPreferredName||"",
-    DOB:values.DOB||"",
-    partnerDOB:values.partnerDOB||"",
-    email:values.email||"",
-    partnerEmail:values.partnerEmail||"",
-    phoneNumber:values.phoneNumber||"",
-    partnerPhoneNumber:values.partnerPhoneNumber||"",
-    occupation:values.occupation||"",
-    partnerOccupation:values.partnerOccupation||"",
-  };
-
-}
+    let Obj = {};
+    if (values.relationShipStatus == "single") {
+      Obj = {
+        relationShipStatus: values.relationShipStatus || "",
+        firstName: values.firstName || "",
+        surName: values.surName || "",
+        preferredName: values.preferredName || "",
+        DOB: values.DOB || "",
+        email: values.email || "",
+        phoneNumber: values.phoneNumber || "",
+        occupation: values.occupation || "",
+        gender: values.gender || "",
+      };
+    } else {
+      Obj = {
+        relationShipStatus: values.relationShipStatus || "",
+        partnerRelationShipStatus: values.partnerRelationShipStatus || "",
+        firstName: values.firstName || "",
+        partnerFirstName: values.partnerFirstName || "",
+        gender: values.gender || "",
+        partnerGender: values.partnerGender || "Female",
+        partnerFirstName: values.partnerFirstName || "",
+        surName: values.surName || "",
+        partnerSurName: values.partnerSurName || "",
+        preferredName: values.preferredName || "",
+        partnerPreferredName: values.partnerPreferredName || "",
+        DOB: values.DOB || "",
+        partnerDOB: values.partnerDOB || "",
+        email: values.email || "",
+        partnerEmail: values.partnerEmail || "",
+        phoneNumber: values.phoneNumber || "",
+        partnerPhoneNumber: values.partnerPhoneNumber || "",
+        occupation: values.occupation || "",
+        partnerOccupation: values.partnerOccupation || "",
+      };
+    }
     sessionStorage.setItem("PersonalData", JSON.stringify(Obj));
     router.push("../KidsDetails");
     // props.handleStepChange();
@@ -97,6 +126,8 @@ if(values.relationShipStatus== "single"){
     setFieldValue("surName", data.surName || "");
     setFieldValue("partnerSurName", data.partnerSurName || "");
     setFieldValue("preferredName", data.preferredName || "");
+    setFieldValue("gender", data.gender || "");
+    setFieldValue("partnerGender", data?.partnerGender || "Female");
     setFieldValue("partnerPreferredName", data.partnerPreferredName || "");
     setFieldValue("DOB", data.DOB || "");
     setFieldValue("partnerDOB", data.partnerDOB || "");
@@ -107,6 +138,56 @@ if(values.relationShipStatus== "single"){
     setFieldValue("occupation", data.occupation || "");
     setFieldValue("partnerOccupation", data.partnerOccupation || "");
   };
+
+  const parseDateString = (value) => {
+    const [day, month, year] = value.split("/");
+    return new Date(year, month - 1, day);
+  };
+
+  const formatToDateString = (value) => {
+    if (value.length === 8) {
+      return value.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+    }
+    return value;
+  };
+
+  const isValidDateFromFormat = (input) => {
+    if (typeof input === "string" && /^\d{8}$/.test(input)) {
+      const day = parseInt(input.slice(0, 2), 10);
+      const month = parseInt(input.slice(2, 4), 10);
+      const year = parseInt(input.slice(4), 10);
+      const date = new Date(year, month - 1, day);
+
+      return (
+        date.getDate() === day &&
+        date.getMonth() === month - 1 &&
+        date.getFullYear() === year
+      );
+    }
+    return false;
+  };
+
+  const handleDateBlur = (e, setFieldValue, key) => {
+    console.log("event", e);
+    const rawValue = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+    const formattedDateStr = formatToDateString(rawValue);
+
+    // Validate the formatted date string
+    if (isValidDateFromFormat(rawValue)) {
+      const parsedDate = parseDateString(formattedDateStr);
+      setFieldValue(key, parsedDate);
+    } else {
+      // Handle invalid date case (e.g., setFieldValue to null or show an error)
+      const currentDate = new Date();
+
+      setFieldValue(key, currentDate);
+      // Optionally, you can also show an error message here
+    }
+
+    // Optional: Call handleBlur if needed
+    // handleBlur(e);
+  };
+
   return (
     <div className="container">
       <Formik
@@ -220,23 +301,36 @@ if(values.relationShipStatus== "single"){
                 <div className="col-md-4">
                   {/* <Field type="date" name="DOB" className="form-control" /> */}
                   <div
-                  className="CalenderParent"
+                    className="CalenderParent"
                     // style={{
-                     
+
                     // }}
                   >
                     <DatePicker
                       id="DOB"
                       className="form-control inputDesign "
-                      selected={values.DOB}
+                      // selected={values.DOB}
+                      selected={values.DOB ? new Date(values.DOB) : null}
                       onChange={(date) => {
+                        // console.log(date, "date");
                         setFieldValue("DOB", date);
+                        // date.persist();
                       }}
                       dateFormat="dd/MM/yyyy"
                       placeholderText="dd/mm/yyyy"
                       showYearDropdown
+                      onFocus={(e) => {
+                        if (!e.target.value) {
+                          e.target.value = "dd/mm/yyyy";
+                        }
+                        // e.persist();
+                      }}
                       scrollableYearDropdown
-                      onBlur={handleBlur}
+                      onBlur={(e) => {
+                        handleDateBlur(event, setFieldValue, "DOB");
+                        handleBlur();
+                        // e.persist();
+                      }}
                       name="DOB"
                       autocomplete="off"
                       maxDate={new Date()}
@@ -244,10 +338,7 @@ if(values.relationShipStatus== "single"){
                       dropdownMode="select"
                       wrapperClassName="w-100"
                     />
-                    <FaCalendarAlt
-                    className="CalenderIcon"
-                    
-                    />
+                    <FaCalendarAlt className="CalenderIcon" />
                   </div>
                 </div>
                 {values.relationShipStatus == "single" || (
@@ -261,16 +352,25 @@ if(values.relationShipStatus== "single"){
                     >
                       <DatePicker
                         id="partnerDOB"
-                        className="form-control inputDesign "
-                        selected={values.partnerDOB}
-                        onChange={(date) => {
-                          setFieldValue("partnerDOB", date);
+                        className="form-control inputDesign"
+                        selected={
+                          values.partnerDOB ? new Date(values.partnerDOB) : null
+                        } // Ensure selected value is a Date object
+                        onChange={(date) => setFieldValue("partnerDOB", date)}
+                        onFocus={(e) => {
+                          if (!e.target.value) {
+                            e.target.value = "dd/mm/yyyy";
+                          }
                         }}
                         dateFormat="dd/MM/yyyy"
                         placeholderText="dd/mm/yyyy"
                         showYearDropdown
                         scrollableYearDropdown
-                        onBlur={handleBlur}
+                        autoComplete="off"
+                        onBlur={(e) => {
+                          handleDateBlur(e, setFieldValue, "partnerDOB");
+                          handleBlur();
+                        }}
                         name="partnerDOB"
                         maxDate={new Date()}
                         showMonthDropdown
@@ -285,6 +385,42 @@ if(values.relationShipStatus== "single"){
                           pointerEvents: "none",
                           color: "#36b446",
                         }}
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="row mt-3">
+                <div className="col-md-4">
+                  <label
+                    htmlFor="email"
+                    onClick={() => {
+                      console.log(values.partnerGender);
+                    }}
+                  >
+                    Gender
+                  </label>
+                </div>
+                <div className="col-md-4 Center">
+                  <div className="w-50 onMobile ">
+                    <DynamicYesNo
+                      setValue={{ left: "Female", Right: "Male" }}
+                      name={`gender`}
+                      label={{ left: "Female", Right: "Male" }}
+                      values={values}
+                      handleChange={handleChange}
+                    />
+                  </div>
+                </div>
+                {values.relationShipStatus == "single" || (
+                  <div className="col-md-4 largeScrnPartnerForm ">
+                    <div className="w-50 onMobile mx-auto">
+                      <DynamicYesNo
+                        setValue={{ left: "Female", Right: "Male" }}
+                        name={`partnerGender`}
+                        label={{ left: "Female", Right: "Male" }}
+                        values={values}
+                        handleChange={handleChange}
                       />
                     </div>
                   </div>
@@ -328,6 +464,30 @@ if(values.relationShipStatus== "single"){
                   </div>
                 )}
               </div>
+
+              <div className="row mt-4">
+                <div className="col-md-4">
+                  <label htmlFor="">Occupation</label>
+                </div>
+                <div className="col-md-4">
+                  <Field
+                    type="text"
+                    name="occupation"
+                    id="occupation"
+                    className="form-control"
+                  />
+                </div>
+                {values.relationShipStatus == "single" || (
+                  <div className="col-md-4 largeScrnPartnerForm">
+                    <Field
+                      type="text"
+                      name="partnerOccupation"
+                      id="occupation"
+                      className="form-control"
+                    />
+                  </div>
+                )}
+              </div>
               <div className="row mt-3">
                 <div className="col-md-4">
                   <label htmlFor="">Relationship Status</label>
@@ -355,187 +515,192 @@ if(values.relationShipStatus== "single"){
                   </div>
                 )}
               </div>
-              <div className="row mt-4">
-                <div className="col-md-4">
-                  <label htmlFor="">Occupation</label>
-                </div>
-                <div className="col-md-4">
-                  <Field
-                    type="text"
-                    name="occupation"
-                    id="occupation"
-                    className="form-control"
-                  />
-                </div>
-                {values.relationShipStatus == "single" || (
-                  <div className="col-md-4 largeScrnPartnerForm">
-                    <Field
-                      type="text"
-                      name="partnerOccupation"
-                      id="occupation"
-                      className="form-control"
-                    />
-                  </div>
-                )}
-                <div className="mobilePartnerForm">
+              <div className="mobilePartnerForm">
                 {values.relationShipStatus == "single" || (
                   <>
-               
-                  <div className="col-md-4 mt-5 text-center ">
-                    <span className="fw-bold h5">Partner </span>
-                    <CoupleIcon className="mb-1" width={"25px"} />
-                  </div>
-                    </>
-                )}
-                {values.relationShipStatus == "single" || (
-                  <>
-                    <div className="col-md-4">
-                  <label htmlFor="firstName">First Name</label>
-                </div>
-                  <div className="col-md-4">
-                    <Field
-                      type="text"
-                      name="partnerFirstName"
-                      id="partnerFirstName"
-                      className="form-control"
-                    />
-                  </div>
-                </>
-                )}
-                {values.relationShipStatus == "single" || (
-                    <>
-                    <div className="col-md-4">
-                    <label htmlFor="partnerSurName">Sur Name</label>
-                  </div>
-                  <div className="col-md-4">
-                    <Field
-                      type="text"
-                      name="partnerSurName"
-                      className="form-control"
-                      />
-                  </div>
-                      </>
-                )}
-
-                {values.relationShipStatus == "single" || (
-                  <>
-                    <div className="col-md-4">
-                    <label htmlFor="partnerPreferredName">Preferred Name</label>
-                  </div>
-                  <div className="col-md-4">
-                    <Field
-                      type="text"
-                      name="partnerPreferredName"
-                      className="form-control"
-                    />
-                  </div>
+                    <div className="col-md-4 mt-5 text-center ">
+                      <span className="fw-bold h5">Partner </span>
+                      <CoupleIcon className="mb-1" width={"25px"} />
+                    </div>
                   </>
                 )}
-
                 {values.relationShipStatus == "single" || (
                   <>
-                   <div className="col-md-4">
-                  <label htmlFor="partnerDOB">DOB</label>
-                </div>
-                  <div className="col-md-4">
-                    <div
-                      style={{
-                        position: "relative",
-                        display: "inline-block",
-                        width: "100%",
-                      }}
-                      >
-                      <DatePicker
-                        id="partnerDOB"
-                        className="form-control inputDesign "
-                        selected={values.partnerDOB}
-                        onChange={(date) => {
-                          setFieldValue("partnerDOB", date);
-                        }}
-                        dateFormat="dd/MM/yyyy"
-                        placeholderText="dd/mm/yyyy"
-                        showYearDropdown
-                        scrollableYearDropdown
-                        onBlur={handleBlur}
-                        name="partnerDOB"
-                        maxDate={new Date()}
-                        showMonthDropdown
-                        dropdownMode="select"
-                        wrapperClassName="w-100"
-                      />
-                      <FaCalendarAlt
-                        style={{
-                          position: "absolute",
-                          top: "33px",
-                          right: "10px",
-                          pointerEvents: "none",
-                          color: "#36b446",
-                        }}
+                    <div className="col-md-4">
+                      <label htmlFor="firstName">First Name</label>
+                    </div>
+                    <div className="col-md-4">
+                      <Field
+                        type="text"
+                        name="partnerFirstName"
+                        id="partnerFirstName"
+                        className="form-control"
                       />
                     </div>
-                  </div>
+                  </>
+                )}
+                {values.relationShipStatus == "single" || (
+                  <>
+                    <div className="col-md-4">
+                      <label htmlFor="partnerSurName">Sur Name</label>
+                    </div>
+                    <div className="col-md-4">
+                      <Field
+                        type="text"
+                        name="partnerSurName"
+                        className="form-control"
+                      />
+                    </div>
                   </>
                 )}
 
                 {values.relationShipStatus == "single" || (
                   <>
-                  <div className="col-md-4">
-                 <label htmlFor="partnerEmail">Email</label>
-               </div>
-                  <div className="col-md-4">
-                    <Field
-                      type="email"
-                      name="partnerEmail"
-                      className="form-control"
-                    />
-                  </div>
+                    <div className="col-md-4">
+                      <label htmlFor="partnerPreferredName">
+                        Preferred Name
+                      </label>
+                    </div>
+                    <div className="col-md-4">
+                      <Field
+                        type="text"
+                        name="partnerPreferredName"
+                        className="form-control"
+                      />
+                    </div>
                   </>
                 )}
 
                 {values.relationShipStatus == "single" || (
-                   <>
-                   <div className="col-md-4">
-                  <label htmlFor="partnerPhoneNumber">Phone Number</label>
-                </div>
-                  <div className="col-md-4">
-                    <Field
-                      type="text"
-                      name="partnerPhoneNumber"
-                      className="form-control"
-                    />
-                  </div>
-                  </>
-                )}
-                {values.relationShipStatus == "single" || (
-                        <>
-                        <div className="col-md-4">
-                       <label htmlFor="partnerRelationShipStatus">RelationShip Status</label>
-                     </div>
-                  <div className="col-md-4">
-                    <div className="d-flex justify-content-center  align-items-center onMobile">
-                      <div className="w-25">
-                        <div className="CoupleSelected">Couple</div>
+                  <>
+                    <div className="col-md-4">
+                      <label htmlFor="partnerDOB">DOB</label>
+                    </div>
+                    <div className="col-md-4">
+                      <div
+                        style={{
+                          position: "relative",
+                          display: "inline-block",
+                          width: "100%",
+                        }}
+                      >
+                        <DatePicker
+                          id="partnerDOB"
+                          className="form-control inputDesign "
+                          selected={values.partnerDOB}
+                          onChange={(date) => {
+                            setFieldValue("partnerDOB", date);
+                          }}
+                          dateFormat="dd/MM/yyyy"
+                          placeholderText="dd/mm/yyyy"
+                          showYearDropdown
+                          scrollableYearDropdown
+                          autocomplete="off"
+                          onBlur={handleBlur}
+                          name="partnerDOB"
+                          maxDate={new Date()}
+                          showMonthDropdown
+                          dropdownMode="select"
+                          wrapperClassName="w-100"
+                        />
+                        <FaCalendarAlt
+                          style={{
+                            position: "absolute",
+                            top: "33px",
+                            right: "10px",
+                            pointerEvents: "none",
+                            color: "#36b446",
+                          }}
+                        />
                       </div>
                     </div>
-                  </div>
+                  </>
+                )}
+
+                {values.relationShipStatus == "single" || (
+                  <>
+                  {renderBtn?
+                  <>
+                    <div className="col-md-4">
+                      <label htmlFor="partnerGender">Gender</label>
+                    </div>
+                    <div className="col-md-4">
+                      <div className="w-50 mx-auto">
+                        <DynamicYesNo
+                          setValue={{ left: "Female", Right: "Male" }}
+                          name={`partnerGender`}
+                          label={{ left: "Female", Right: "Male" }}
+                          values={values}
+                          handleChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                  </>
+                    :""}
+                  </>
+                )}
+
+                {values.relationShipStatus == "single" || (
+                  <>
+                    <div className="col-md-4">
+                      <label htmlFor="partnerEmail">Email</label>
+                    </div>
+                    <div className="col-md-4">
+                      <Field
+                        type="email"
+                        name="partnerEmail"
+                        className="form-control"
+                      />
+                    </div>
+                  </>
+                )}
+
+                {values.relationShipStatus == "single" || (
+                  <>
+                    <div className="col-md-4">
+                      <label htmlFor="partnerPhoneNumber">Phone Number</label>
+                    </div>
+                    <div className="col-md-4">
+                      <Field
+                        type="text"
+                        name="partnerPhoneNumber"
+                        className="form-control"
+                      />
+                    </div>
+                  </>
+                )}
+
+                {values.relationShipStatus == "single" || (
+                  <>
+                    <div className="col-md-4">
+                      <label htmlFor="partnerOccupation">Occupation</label>
+                    </div>
+                    <div className="col-md-4">
+                      <Field
+                        type="text"
+                        name="partnerOccupation"
+                        id="occupation"
+                        className="form-control"
+                      />
+                    </div>
                   </>
                 )}
                 {values.relationShipStatus == "single" || (
-                       <>
-                       <div className="col-md-4">
-                      <label htmlFor="partnerOccupation">Occupation</label>
+                  <>
+                    <div className="col-md-4">
+                      <label htmlFor="partnerRelationShipStatus">
+                        RelationShip Status
+                      </label>
                     </div>
-                 <div className="col-md-4">
-                    <Field
-                      type="text"
-                      name="partnerOccupation"
-                      id="occupation"
-                      className="form-control"
-                    />
-                  </div>
+                    <div className="col-md-4">
+                      <div className="d-flex justify-content-center  align-items-center onMobile">
+                        <div className="w-25">
+                          <div className="CoupleSelected">Couple</div>
+                        </div>
+                      </div>
+                    </div>
                   </>
                 )}
-                </div>
               </div>
             </Form>
           );

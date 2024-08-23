@@ -150,6 +150,15 @@ function KidsDetails(props) {
                             // setFieldValue("genderOfChild" + (index + 1), "Male")
                             return (
                               <tr key={index}>
+                                <td>
+                                  <Field
+                                    type="text"
+                                    className="form-control"
+                                    name={`nameOfChild${child}`}
+                                    placeholder="Name"
+                                    id={`nameOfChild${child}`}
+                                  />
+                                </td>
                                  <td>
                                   <div
                                    className="CalenderParent"
@@ -206,15 +215,7 @@ function KidsDetails(props) {
                                     </div>
                                   </div>
                                 </td>
-                                <td>
-                                  <Field
-                                    type="text"
-                                    className="form-control"
-                                    name={`nameOfChild${child}`}
-                                    placeholder="Name"
-                                    id={`nameOfChild${child}`}
-                                  />
-                                </td>
+                                
                               </tr>
                             );
                           })}

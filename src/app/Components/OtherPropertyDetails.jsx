@@ -102,7 +102,7 @@ function OtherPropertyDetails(props) {
     setOtherProperty(updatedData);
     // props.handleStepChange();
     sessionStorage.setItem("OtherPropertyDetails", JSON.stringify(updatedData));
-    router.push("../OtherIncome");
+    router.push("../AreaOfAdvice");
   };
 
   const validationSchema = Yup.object({
@@ -137,9 +137,9 @@ function OtherPropertyDetails(props) {
         >
           {({ values, handleChange, handleBlur, setFieldValue }) => (
             <Form>
-              <h3 className="text-center Green mt-5">
+              {/* <h3 className="text-center Green mt-5">
                 Other Properties (excluding your home)
-              </h3>
+              </h3> */}
               <label className="Center mt-3">
                 Does {formData.preferredName} own any other property other than your home?
               </label>
@@ -341,12 +341,12 @@ function OtherPropertyDetails(props) {
                                   </option>
                                   <option value="Monthly">Monthly</option>
                                 </Field>
-                                <h4 className="text-center mt-3">
+                                {/* <h4 className="text-center mt-3">
                                   Income Details {index + 1}
                                 </h4>
                                 <label htmlFor="otherIncome" className="query w-100">
                                   Does {formData.preferredName} have any other income as below?
-                                </label>
+                                </label> */}
                                 
                                 <label
                                   className="text-center Center mt-3"

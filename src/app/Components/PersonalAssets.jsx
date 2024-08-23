@@ -12,8 +12,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 function PersonalAssets(props) {
-  const [personalAssets, setPersonalAssets] =
-    useRecoilState(personalAssetsState);
+  const [personalAssets, setPersonalAssets] = useRecoilState(personalAssetsState);
   const [formData] = useRecoilState(personalDataState);
 
   const toCommaAndDollar = (x) =>
@@ -23,11 +22,10 @@ function PersonalAssets(props) {
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-      const parseNumberFromFormattedString = (str) => {
-        if (!str) return 0; // Handle undefined, null, or empty strings
-        return parseFloat(str.replace(/[^0-9.-]+/g, ""));
-      };
-      
+  const parseNumberFromFormattedString = (str) => {
+    if (!str) return 0; // Handle undefined, null, or empty strings
+    return parseFloat(str.replace(/[^0-9.-]+/g, ""));
+  };
 
   const assetTypes = [
     {
@@ -93,32 +91,30 @@ function PersonalAssets(props) {
     }
     return acc;
   }, {});
+
   const router = useRouter();
 
   const onSubmit = (values) => {
     const formattedValues = assetTypes.reduce((acc, asset) => {
-      // Ensure the value is a valid string or provide a default value
       const youValue = values[asset.youId] || "0";
       acc[asset.youId] = parseNumberFromFormattedString(youValue);
-  
+
       if (formData.relationShipStatus === "couple") {
         const partnerValue = values[asset.partnerId] || "0";
         acc[asset.partnerId] = parseNumberFromFormattedString(partnerValue);
       }
-  
+
       return acc;
     }, {});
-  
+
     setPersonalAssets(formattedValues);
     console.log(formattedValues);
     sessionStorage.setItem("PersonalAssets", JSON.stringify(formattedValues));
     router.push("../FinancialAssets");
   };
-  
-  const updateFieldValues=(setFieldValue)=>{
-    // alert("komail2");
-    let data=JSON.parse(sessionStorage.getItem("PersonalAssets"));
-    // console.log("Data",data)
+
+  const updateFieldValues = (setFieldValue) => {
+    let data = JSON.parse(sessionStorage.getItem("PersonalAssets"));
     if (data) {
       Object.keys(data).forEach((key) => {
         const formattedValue = toCommaAndDollar(data[key]);
@@ -135,53 +131,53 @@ function PersonalAssets(props) {
         onSubmit={onSubmit}
         innerRef={props.FormReff}
       >
-        {({ values, setFieldValue }) =>{
-               useEffect(() => {
-                // alert("komail");
-                if(sessionStorage.getItem("PersonalAssets")){
-                  // alert("komail1");
-                  updateFieldValues(setFieldValue);
-                }
-              }, [])
-          return(
-          <Form className="text-center">
-            <div className="row justify-content-center">
-              <div className="col-md-5">
-                {assetTypes.map((asset) => (
-                  <div key={asset.key} className="asset-section mt-4 border w-100" style={{ padding: "2rem 5rem 3rem 5rem" }}>
-                    <h4 className="text-center pt-3 mt-4">{asset.label}</h4>
-                    {asset.isImage ? (
-                      <Image
-                        alt="img"
-                        className="img-responsive mt-2 businessimg1"
-                        src={asset.Icon}
+        {({ values, setFieldValue }) => {
+          useEffect(() => {
+            if (sessionStorage.getItem("PersonalAssets")) {
+              updateFieldValues(setFieldValue);
+            }
+          }, []);
+
+          return (
+            <Form className="text-center">
+              <div className="row justify-content-center">
+                <div className="col-md-5">
+                  {assetTypes.map((asset) => (
+                    <div key={asset.key} className="asset-section mt-4 border w-100" style={{ padding: "2rem 5rem 3rem 5rem" }}>
+                      <h4 className="text-center pt-3 mt-4">{asset.label}</h4>
+                      {asset.isImage ? (
+                        <Image
+                          alt="img"
+                          className="img-responsive mt-2 businessimg1"
+                          src={asset.Icon}
+                        />
+                      ) : (
+                        <asset.Icon
+                          alt="img"
+                          className="img-responsive svgs mt-3"
+                        />
+                      )}
+                      <label className="d-block mt-3" htmlFor={asset.youId}>
+                        {formData.relationShipStatus === "couple" && !asset.isPartnered
+                          ? "Combined"
+                          : formData.preferredName}
+                      </label>
+                      <Field
+                        className="form-control w-75 mx-auto mt-2"
+                        id={asset.youId}
+                        name={asset.youId}
+                        placeholder="Please Enter Value in $"
+                        value={values[asset.youId]}
+                        onChange={(e) => {
+                          let rawValue = e.target.value
+                            ? e.target.value.replace(/[^0-9.-]+/g, "")
+                            : "0";
+                          let formattedValue = toCommaAndDollar(rawValue);
+                          setFieldValue(asset.youId, formattedValue);
+                        }}
+                        type="text"
                       />
-                    ) : (
-                      <asset.Icon
-                        alt="img"
-                        className="img-responsive svgs mt-3"
-                      />
-                    )}
-                    <label className="d-block mt-3" htmlFor={asset.youId}>
-                      {formData.preferredName}
-                    </label>
-                    <Field
-                      className="form-control w-75 mx-auto mt-2"
-                      id={asset.youId}
-                      name={asset.youId}
-                      placeholder="Please Enter Value in $"
-                      value={values[asset.youId]}
-                      onChange={(e) => {
-                        let rawValue = e.target.value
-                          ? e.target.value.replace(/[^0-9.-]+/g, "")
-                          : "0";
-                        let formattedValue = toCommaAndDollar(rawValue);
-                        setFieldValue(asset.youId, formattedValue);
-                      }}
-                      type="text"
-                    />
-                    {formData.relationShipStatus === "couple" &&
-                      asset.isPartnered == true && (
+                      {formData.relationShipStatus === "couple" && asset.isPartnered && (
                         <React.Fragment>
                           <label className="mt-3" htmlFor={asset.partnerId}>
                             {formData.partnerPreferredName}
@@ -203,12 +199,13 @@ function PersonalAssets(props) {
                           />
                         </React.Fragment>
                       )}
-                  </div>
-                ))}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          </Form>
-        )}}
+            </Form>
+          );
+        }}
       </Formik>
     </div>
   );
