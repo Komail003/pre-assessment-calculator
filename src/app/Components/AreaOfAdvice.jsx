@@ -583,6 +583,8 @@ function AreaOfAdvice(props) {
     // console.log(selectedGoals);
     await setSelectedGoals(selectedGoals);
     await sessionStorage.setItem("OtherIncome", JSON.stringify(selectedGoals));
+    sessionStorage.setItem("ReloadFlag", false);
+    sessionStorage.setItem("ReloadFlag2", "true");
     await getBase64PDF();
     router.push("/Results");
 
