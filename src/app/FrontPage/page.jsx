@@ -1,4 +1,5 @@
 // import { useRouter } from "next/router";
+"use client";
 import React, { useEffect, useState } from "react";
 import WithNavigation from "../Components/WithNavigation";
 import { useRouter } from "next/navigation";
