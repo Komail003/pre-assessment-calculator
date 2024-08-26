@@ -207,7 +207,7 @@ function FinancialAssets(props) {
                                 </Tooltip>
                               }
                             >
-                              <span style={{marginTop:"13px",}} className="ms-2">
+                              <span style={{marginTop:"11px",}} className="ms-2">
                                 <FaCircleInfo />
                               </span>
                             </OverlayTrigger>

@@ -64,8 +64,8 @@ function PersonalData(props) {
     phoneNumber: "",
     partnerPhoneNumber: "",
     occupation: "",
-    gender: "Female",
-    partnerGender: "Female",
+    gender: "Male",
+    partnerGender: "Male",
     partnerOccupation: "",
   };
   const router = useRouter();
@@ -92,7 +92,7 @@ function PersonalData(props) {
         firstName: values.firstName || "",
         partnerFirstName: values.partnerFirstName || "",
         gender: values.gender || "",
-        partnerGender: values.partnerGender || "Female",
+        partnerGender: values.partnerGender || "Male",
         partnerFirstName: values.partnerFirstName || "",
         surName: values.surName || "",
         partnerSurName: values.partnerSurName || "",
@@ -127,7 +127,7 @@ function PersonalData(props) {
     setFieldValue("partnerSurName", data.partnerSurName || "");
     setFieldValue("preferredName", data.preferredName || "");
     setFieldValue("gender", data.gender || "");
-    setFieldValue("partnerGender", data?.partnerGender || "Female");
+    setFieldValue("partnerGender", data?.partnerGender || "Male");
     setFieldValue("partnerPreferredName", data.partnerPreferredName || "");
     setFieldValue("DOB", data.DOB || "");
     setFieldValue("partnerDOB", data.partnerDOB || "");
@@ -380,7 +380,7 @@ function PersonalData(props) {
                       <FaCalendarAlt
                         style={{
                           position: "absolute",
-                          top: "10px",
+                          top: "13px",
                           right: "10px",
                           pointerEvents: "none",
                           color: "#36b446",

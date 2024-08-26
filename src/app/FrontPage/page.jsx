@@ -23,8 +23,10 @@ const Homepage = () => {
         }}
         className="btn btn-success w-25 py-0"
       >
+        <span className="flex justify-content-center"> 
         <MdKeyboardDoubleArrowRight size={24} className="fw-bold" />
         Start
+        </span>
       </button>
         <label htmlFor="" className="mt-3 px-4">
           Denaro Wealth Pty Ltd (ABN 23 625 686 464 is a Corporate Authorised

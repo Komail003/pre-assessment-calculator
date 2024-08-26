@@ -133,16 +133,13 @@ function KidsDetails(props) {
                       <table className="table table-bordered table-hover">
                         <thead className="text-center">
                           <tr>
-                            <th scope="col">DOB</th>
-                            <th scope="col">Gender</th>
                             <th
                               scope="col"
-                              // onClick={() => {
-                              //   console.log(values);
-                              // }}
                             >
-                              Children Details
+                              Child Name
                             </th>
+                            <th scope="col">DOB</th>
+                            <th scope="col">Gender</th>
                           </tr>
                         </thead>
                         <tbody>
