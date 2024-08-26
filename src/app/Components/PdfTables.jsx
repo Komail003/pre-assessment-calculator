@@ -173,7 +173,7 @@ const PdfTables = () => {
   };
 
   return (
-    <div className="p-3">
+    <div className="p-3 d-none">
       <h2>Your Information</h2>
       <label htmlFor="">
         Below is the summary of the information that you have entered
