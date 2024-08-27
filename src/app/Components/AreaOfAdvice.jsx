@@ -548,7 +548,7 @@ function AreaOfAdvice(props) {
     // console.log("base64PDF: ", base64PDF);
     let formData = await JSON.parse(sessionStorage.getItem("PersonalData"));
     setPersonalData(formData);
-    if (formData && formData.DOB) {
+    if (formData && formData.DOB &&formData.partnerDOB) {
       // Create a new Date object from the DOB
       let dobDate = new Date(formData.DOB);
       let PartnerDobDate = new Date(formData.partnerDOB);
@@ -570,7 +570,16 @@ function AreaOfAdvice(props) {
       formData.partnerDOB = PartnerAustralianDate;
       // console.log(formData.DOB,formData.partnerDOB )
 
-    } else {
+    }else if(formData && formData.DOB){
+      let dobDate = new Date(formData.DOB);
+      let australianDate = dobDate.toLocaleDateString("en-AU", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      });
+      formData.DOB = australianDate;
+    }
+     else {
       console.log("DOB not found in formData.");
     }
     // console.log("email sender", formData);

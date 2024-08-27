@@ -17,7 +17,7 @@ function KidsDetails(props) {
   useEffect(() => {
     const updatePlacement = () => {
       if (window.innerWidth <= 768) {
-        setPlacement('right');
+        setPlacement('bottom');
       } else {
         setPlacement('bottom');
       }
