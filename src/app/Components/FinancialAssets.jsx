@@ -252,9 +252,7 @@ function FinancialAssets(props) {
                               </OverlayTrigger>
                             )}
                             <Field
-                              className={`form-control w-75 mx-auto mt-2 ${
-                                asset.name === "pension" ? "w-100" : ""
-                              }`}
+                              className={`form-control w-75 mx-auto mt-2`}
                               id={`${asset.name}.partner`}
                               name={`${asset.name}.partner`}
                               placeholder="Please Enter Value in $"
