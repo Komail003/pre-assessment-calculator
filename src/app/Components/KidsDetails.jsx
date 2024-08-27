@@ -136,7 +136,7 @@ function KidsDetails(props) {
                             <th
                               scope="col"
                             >
-                              Child Name
+                              Childs Name
                             </th>
                             <th scope="col">DOB</th>
                             <th scope="col">Gender</th>

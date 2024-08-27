@@ -95,7 +95,7 @@ function PropertyDetails(props) {
                     >
                       <div className="m-0 p-0">
                         <Property
-                          className="img-responsive"
+                          className="img-responsive businessimg"
                           style={{ marginTop: "-40px" }}
                         />
                       </div>

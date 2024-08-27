@@ -23,8 +23,9 @@ function IncomeDetails(props) {
       icon: (
         <Businessman
           alt="Employment Income"
-          className="img-responsive mt-3"
+          className="img-responsive businessimg mt-3"
           width={70}
+          height={100}
         />
       ),
       tooltip:
@@ -53,7 +54,7 @@ function IncomeDetails(props) {
       icon: (
         <Gear
           alt="Centrelink Payments"
-          className="img-responsive mt-3"
+          className="img-responsive businessimg mt-3"
           style={{ height: "100px" }}
           width={70}
         />
@@ -68,7 +69,7 @@ function IncomeDetails(props) {
       icon: (
         <Money
           alt="Super Pension Payments"
-          className="img-responsive mt-3"
+          className="img-responsive businessimg mt-3"
           width={70}
         />
       ),

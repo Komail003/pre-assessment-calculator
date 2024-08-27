@@ -140,7 +140,11 @@ input[type="number"] {
 }
 .businessimg1 {
   width: 95px !important;
-  height: 95px;
+  height: 95px !important;
+}
+.businessimg3 {
+  width: 65px !important;
+  height: 65px !important;
 }
 
 .tdmbl {
@@ -171,14 +175,12 @@ input[type="number"] {
   pointerevents: none;
   color: #36b446;
 }
-.svgs {
-  width: 25%;
-}
+
 .btn {
-  padding-left: 45px !important;
-  padding-right: 45px !important;
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
+  padding-left: 65px !important;
+  padding-right: 65px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
 }
 
 .goal-item {
@@ -265,44 +267,20 @@ input[type="number"] {
   color: #36b446 !important;
   font-weight: bold;
 }
-@media only screen and (max-width: 455px) {
-  .goal-item {
-    max-width: 160px !important;
-    width: 160px !important;
-    height: 195px !important;
-    max-height: 195px !important;
-  }
-}
-@media only screen and (max-width: 375px) {
-  .goal-item {
-    max-width: 300px !important;
-    width: 300px !important;
-    height: 150px !important;
-    max-height: 150px !important;
-  }
-  .btn {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-  }
-  .nav-link{
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    font-size: 12px !important;
-    width:30px !important;
-  }
-}
 @media only screen and (max-width: 768px) {
+  .btn {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
   .goal-item {
     max-width: 150px;
     width: 150px;
     height: 200px;
     max-height: 250px;
   }
-  .svgs {
-    width: 50%;
-  }
+ 
   .businessimg {
     width: 75px !important;
     height: 75px !important;
@@ -310,6 +288,10 @@ input[type="number"] {
   .businessimg1 {
     width: 85px !important;
     height: 85px !important;
+  }
+  .businessimg3 {
+    width: 65px !important;
+    height: 65px !important;
   }
   .form-control {
     margin-top: 20px;
@@ -389,6 +371,41 @@ input[type="number"] {
     width:50px !important;
   }
 }
+@media only screen and (max-width: 455px) {
+  .goal-item {
+    max-width: 160px !important;
+    width: 160px !important;
+    height: 195px !important;
+    max-height: 195px !important;
+  }
+   .nav-link{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    font-size: 10px !important;
+    width:25px !important;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .goal-item {
+    max-width: 300px !important;
+    width: 300px !important;
+    height: 150px !important;
+    max-height: 150px !important;
+  }
+  .btn {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+  }
+  .nav-link{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    font-size: 10px !important;
+    width:25px !important;
+  }
+}
+
 
 .CoupleSelected {
   height: 45px;

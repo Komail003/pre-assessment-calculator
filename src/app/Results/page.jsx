@@ -55,11 +55,11 @@ const Result = () => {
 
       if (reloaded === "true") {
         // If the page was reloaded, clear session storage and navigate to home page
-        alert("page is reloaded");
+        // alert("page is reloaded");
         sessionStorage.clear();
         router.push("/");
       } else {
-        alert("page reloaded without clearance");
+        // alert("page reloaded without clearance");
         // If it's the first time visiting the page, set the reloaded flag
         sessionStorage.setItem("ReloadFlag", "true");
         // sessionStorage.setItem("ReloadFlag2", "true");

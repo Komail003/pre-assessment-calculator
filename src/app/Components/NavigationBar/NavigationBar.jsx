@@ -54,7 +54,7 @@ const NavigationBar = ({ currentPath }) => {
 
   return (
     <div className="navigation-bar d-flex justify-content-center">
-      <ul className="nav">
+      <ul className="nav d-flex justify-content-center">
         {steps.map((step, index) => (
           <li
             key={index}

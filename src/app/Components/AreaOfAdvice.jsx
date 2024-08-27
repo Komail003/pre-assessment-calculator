@@ -547,8 +547,33 @@ function AreaOfAdvice(props) {
 
     // console.log("base64PDF: ", base64PDF);
     let formData = await JSON.parse(sessionStorage.getItem("PersonalData"));
-    console.log("email sender", formData);
     setPersonalData(formData);
+    if (formData && formData.DOB) {
+      // Create a new Date object from the DOB
+      let dobDate = new Date(formData.DOB);
+      let PartnerDobDate = new Date(formData.partnerDOB);
+
+      // Format the date as DD/MM/YYYY
+      let australianDate = dobDate.toLocaleDateString("en-AU", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      });
+      let PartnerAustralianDate = PartnerDobDate.toLocaleDateString("en-AU", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      });
+
+      // Update the DOB in formData with the formatted date
+      formData.DOB = australianDate;
+      formData.partnerDOB = PartnerAustralianDate;
+      // console.log(formData.DOB,formData.partnerDOB )
+
+    } else {
+      console.log("DOB not found in formData.");
+    }
+    // console.log("email sender", formData);
     let Data = JSON.stringify({
       to: formData.email,
       subject: `Pre-Assessment Calculator Report (${formData.preferredName})`,
@@ -661,23 +686,15 @@ function AreaOfAdvice(props) {
                       >
                         <label className="form-label">{label}</label>
                         <div className="text-center">
-                          <div
-                            className="mx-auto"
-                            style={{ width: "60px", height: "60px" }}
-                          >
+                          <div className="mx-auto">
                             {isImage ? (
                               <Image
                                 src={Icon}
                                 alt={label}
-                                className="img-fluid"
-                                width={"100%"}
-                                height={"100%"}
+                                className="img-responsive businessimg3"
                               />
                             ) : (
-                              <Icon
-                                className="img-fluid"
-                                style={{ width: "60px", height: "60px" }}
-                              />
+                              <Icon className="img-responsive businessimg3" />
                             )}
                           </div>
                         </div>

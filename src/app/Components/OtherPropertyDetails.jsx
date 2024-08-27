@@ -228,7 +228,7 @@ function OtherPropertyDetails(props) {
                               >
                                 <Property
                                   alt="img"
-                                  className="img-responsive svgs"
+                                  className="img-responsive businessimg1"
                                 />
                                 <h4 className="text-center">
                                   Property Details {index + 1}

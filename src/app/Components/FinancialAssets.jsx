@@ -189,7 +189,7 @@ function FinancialAssets(props) {
                       style={{ padding: "3rem 5rem 3rem 5rem" }}
                     >
                       <h4 className="text-center">{asset.label}</h4>
-                      <asset.icon className="img-responsive svgs mt-3" />
+                      <asset.icon className="img-responsive businessimg1 mt-3" />
                       <div className=" mt-3">
                         <div className="Center">
                           <label
@@ -214,9 +214,7 @@ function FinancialAssets(props) {
                           )}
                         </div>
                         <Field
-                          className={`form-control w-75 mx-auto mt-2 ${
-                            asset.name === "pension" ? "w-100" : ""
-                          }`}
+                          className={`form-control w-75 mx-auto mt-2`}
                           id={`${asset.name}.you`}
                           name={`${asset.name}.you`}
                           placeholder="Please Enter Value in $"

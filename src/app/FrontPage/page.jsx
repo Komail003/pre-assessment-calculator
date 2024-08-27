@@ -21,13 +21,14 @@ const Homepage = () => {
         onClick={() => {
           navigateTOCalculator();
         }}
-        className="btn btn-success w-25 py-0"
+        className="btn btn-success startbtn"
       >
-        <span className="flex justify-content-center"> 
+        <span className="d-flex justify-content-center"> 
         <MdKeyboardDoubleArrowRight size={24} className="fw-bold" />
         Start
         </span>
       </button>
+      <br />
         <label htmlFor="" className="mt-3 px-4">
           Denaro Wealth Pty Ltd (ABN 23 625 686 464 is a Corporate Authorised
           Representative (ASIC No. 1263750) of Lifespan Financial Planning Pty

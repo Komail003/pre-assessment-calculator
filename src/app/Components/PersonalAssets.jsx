@@ -154,7 +154,7 @@ function PersonalAssets(props) {
                       ) : (
                         <asset.Icon
                           alt="img"
-                          className="img-responsive svgs mt-3"
+                          className="img-responsive svgs mt-3 businessimg1"
                         />
                       )}
                       <label className="d-block mt-3" htmlFor={asset.youId}>
