@@ -152,15 +152,8 @@ function IncomeDetails(props) {
                       key={index}
                       style={{ padding: "3rem 5rem 3rem 5rem" }}
                     >
-                      <h4 className="mb-3">{type.name}</h4>
-                      {type.icon}
                       <div className="Center">
-                        <label
-                          className="d-block mb-0 mt-2"
-                          htmlFor={type.clientField}
-                        >
-                          {formData.preferredName}
-                        </label>
+                        <h4 className="mb-3">{type.name}</h4>
                         <OverlayTrigger
                           placement="top"
                           overlay={
@@ -172,12 +165,21 @@ function IncomeDetails(props) {
                           <span>
                             <FaCircleInfo
                               size={16}
-                              style={{ marginTop: "20px" }}
+                              style={{ marginTop: "5px" }}
                               className="ms-2"
                             />
                           </span>
                         </OverlayTrigger>
                       </div>
+                      {type.icon}
+
+                      <label
+                        className="d-block mb-0 mt-2"
+                        htmlFor={type.clientField}
+                      >
+                        {formData.preferredName}
+                      </label>
+
                       <Field
                         className="form-control w-75 mx-auto mt-1"
                         id={type.clientField}
@@ -197,30 +199,12 @@ function IncomeDetails(props) {
 
                       {formData.relationShipStatus === "couple" && (
                         <>
-                          <div className="Center mt-3">
                             <label
                               className="d-block mb-0"
                               htmlFor={type.partnerField}
                             >
                               {formData.partnerPreferredName}
                             </label>
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip id={`tooltip-${type.partnerField}`}>
-                                  {type.tooltip}
-                                </Tooltip>
-                              }
-                            >
-                              <span>
-                                <FaCircleInfo
-                                  size={16}
-                                  style={{ marginTop: "13px" }}
-                                  className=" ms-2"
-                                />
-                              </span>
-                            </OverlayTrigger>
-                          </div>
                           <Field
                             className="form-control w-75 mx-auto mt-1"
                             id={type.partnerField}

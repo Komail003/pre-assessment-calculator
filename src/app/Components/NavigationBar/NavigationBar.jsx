@@ -10,6 +10,7 @@ import {
   FaClipboardList,
   FaLightbulb,
 } from "react-icons/fa";
+import { FaBuildingFlag, FaCar, FaCashRegister, FaMoneyBill } from "react-icons/fa6";
 // import './NavigationBar.css'; // Ensure CSS is imported
 
 const NavigationBar = ({ currentPath }) => {
@@ -17,38 +18,38 @@ const NavigationBar = ({ currentPath }) => {
     {
       path: "/PersonalData",
       label: "Personal Data",
-      icon: <FaUser size={20} />,
+      icon: <FaUser size={18} />,
     },
     {
       path: "/KidsDetails",
       label: "Kids Details",
-      icon: <FaChild size={20} />,
+      icon: <FaChild size={18} />,
     },
     {
       path: "/IncomeDetails",
       label: "Income Details",
-      icon: <FaDollarSign size={20} />,
+      icon: <FaDollarSign size={18} />,
     },
-    { path: "/HomeDetails", label: "Home Details", icon: <FaHome size={20} /> },
+    { path: "/HomeDetails", label: "Home Details", icon: <FaHome size={18} /> },
     {
       path: "/PersonalAssets",
       label: "Personal Assets",
-      icon: <FaPiggyBank size={20} />,
+      icon: <FaCar size={18} />,
     },
     {
       path: "/FinancialAssets",
       label: "Financial Assets",
-      icon: <FaBuilding size={20} />,
+      icon: <FaMoneyBill size={18} />,
     },
     {
       path: "/OtherPropertyDetails",
       label: "Other Property Details",
-      icon: <FaClipboardList size={20} />,
+      icon: <FaBuilding size={18} />,
     },
     {
       path: "/AreaOfAdvice",
       label: "Area Of Advice",
-      icon: <FaLightbulb size={20} />,
+      icon: <FaLightbulb size={18} />,
     },
   ];
 

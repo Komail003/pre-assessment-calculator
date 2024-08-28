@@ -123,7 +123,7 @@ function PropertyDetails(props) {
                         type="text"
                       />
 
-                      <h3 className="text-center mt-3">Loan Details</h3>
+                      {/* <h3 className="text-center mt-3">Loan Details</h3> */}
                       <label
                         className="text-center Center mt-2"
                         htmlFor="loanBalance"
@@ -147,7 +147,7 @@ function PropertyDetails(props) {
                         type="text"
                       />
                       <label className="mt-3" htmlFor="rentReceived">
-                        Loan Repayments
+                        Repayments
                       </label>
                       <Field
                         className="form-control w-75 mx-auto mt-2"
@@ -166,7 +166,7 @@ function PropertyDetails(props) {
                         type="text"
                       />
                       <label className="mt-3" htmlFor="rentOptions">
-                        Frequency of Repayments
+                        Frequency
                       </label>
                       <Field
                         className="form-select w-75 mx-auto mt-2"

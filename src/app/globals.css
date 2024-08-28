@@ -200,10 +200,13 @@ input[type="number"] {
 
   overflow-x: hidden;
 }
-
+a.nav-link{
+  padding-left: 0;
+  padding-right: 0;
+}
 .navigation-bar .nav-item {
   text-align: center;
-  margin: 0 15px; /* Increase margin to add spacing between items */
+  margin: 0; /* Increase margin to add spacing between items */
   position: relative; /* Position relative to place the line behind the icon */
 }
 
@@ -261,12 +264,22 @@ input[type="number"] {
   text-decoration: none;
 }
 .nav-link{
-  width: 90px !important;
+  width: 70px !important;
 }
 .navigation-bar .nav-item.active .nav-link {
   color: #36b446 !important;
   font-weight: bold;
 }
+
+
+
+
+@media only screen and (min-width: 1000px) {
+  .nav-link{
+    width: 90px !important;
+  }  
+}
+
 @media only screen and (max-width: 768px) {
   .btn {
     padding-left: 40px !important;
@@ -381,8 +394,8 @@ input[type="number"] {
    .nav-link{
     padding-left: 0 !important;
     padding-right: 0 !important;
-    font-size: 10px !important;
-    width:25px !important;
+    font-size: 8px !important;
+    width:35px !important;
   }
 }
 @media only screen and (max-width: 375px) {

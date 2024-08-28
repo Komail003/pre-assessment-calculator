@@ -137,9 +137,9 @@ function OtherPropertyDetails(props) {
         >
           {({ values, handleChange, handleBlur, setFieldValue }) => (
             <Form>
-              {/* <h3 className="text-center Green mt-5">
+              <h3 className="text-center Green mt-5">
                 Other Properties (excluding your home)
-              </h3> */}
+              </h3>
               <label className="Center mt-3">
                 Does {formData.preferredName} own any other property other than your home?
               </label>
@@ -262,9 +262,9 @@ function OtherPropertyDetails(props) {
                                   )}
                                 />
 
-                                <h3 className="text-center mt-4">
+                                {/* <h3 className="text-center mt-4">
                                   Loan Details
-                                </h3>
+                                </h3> */}
                                 <label
                                   className="text-center Center mt-3"
                                   htmlFor={`loanBalance${index}`}
@@ -298,7 +298,7 @@ function OtherPropertyDetails(props) {
                                   className="mt-3"
                                   htmlFor={`rentReceived${index}`}
                                 >
-                                    Loan Repayments
+                                    Repayments
                                 </label>
                                 <Field
                                   className="form-control w-75 mx-auto mt-2"
@@ -326,7 +326,7 @@ function OtherPropertyDetails(props) {
                                   className="mt-3"
                                   htmlFor={`rentOptions${index}`}
                                 >
-                                  Frequency of Repayments
+                                  Frequency
                                 </label>
                                 <Field
                                   className="form-select w-75 mx-auto mt-2"
@@ -348,25 +348,7 @@ function OtherPropertyDetails(props) {
                                   Does {formData.preferredName} have any other income as below?
                                 </label> */}
                                 
-                                <label
-                                  className="text-center Center mt-3"
-                                  htmlFor={`frequencyOfRentMain${index}`}
-                                >
-                                  Frequency of Rent
-                                </label>
-                                <Field
-                                  className="form-select w-75 mx-auto mt-2"
-                                  id={`frequencyOfRentMain${index}`}
-                                  name={`frequencyOfRentMain${index}`}
-                                  as="select"
-                                >
-                                  <option value="">Select</option>
-                                  <option value="Weekly">Weekly</option>
-                                  <option value="Fortnightly">
-                                    Fortnightly
-                                  </option>
-                                  <option value="Monthly">Monthly</option>
-                                </Field>
+                                
                                 <label
                                   className="mt-3"
                                   htmlFor={`rentReceivedMain${index}`}
@@ -398,6 +380,25 @@ function OtherPropertyDetails(props) {
                                   )}
                                 />
                                 <label
+                                  className="text-center Center mt-3"
+                                  htmlFor={`frequencyOfRentMain${index}`}
+                                >
+                                  Frequency
+                                </label>
+                                <Field
+                                  className="form-select w-75 mx-auto mt-2"
+                                  id={`frequencyOfRentMain${index}`}
+                                  name={`frequencyOfRentMain${index}`}
+                                  as="select"
+                                >
+                                  <option value="">Select</option>
+                                  <option value="Weekly">Weekly</option>
+                                  <option value="Fortnightly">
+                                    Fortnightly
+                                  </option>
+                                  <option value="Monthly">Monthly</option>
+                                </Field>
+                                <label
                                   className="mt-3"
                                   htmlFor={`annualExpenses${index}`}
                                 >
@@ -417,7 +418,7 @@ function OtherPropertyDetails(props) {
                                   className="form-control w-75 mx-auto mt-2"
                                   id={`annualExpenses${index}`}
                                   name={`annualExpenses${index}`}
-                                  type="text"
+                                  type="text"    
                                   onChange={(e) => {
                                     const rawValue = e.target.value.replace(
                                       /[^0-9.-]+/g,

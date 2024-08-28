@@ -188,31 +188,36 @@ function FinancialAssets(props) {
                       className="mt-4 border w-100"
                       style={{ padding: "3rem 5rem 3rem 5rem" }}
                     >
-                      <h4 className="text-center">{asset.label}</h4>
+                      <div className="Center">
+                        {" "}
+                        <h4 className="text-center">{asset.label}</h4>
+                        {asset.tooltip && (
+                          <OverlayTrigger
+                            placement="top"
+                            overlay={
+                              <Tooltip id={`tooltip-${asset.name}-you`}>
+                                {asset.tooltip}
+                              </Tooltip>
+                            }
+                          >
+                            <span
+                              style={{ marginTop: "3px" }}
+                              className="ms-2"
+                            >
+                              <FaCircleInfo />
+                            </span>
+                          </OverlayTrigger>
+                        )}
+                      </div>
                       <asset.icon className="img-responsive businessimg1 mt-3" />
                       <div className=" mt-3">
-                        <div className="Center">
-                          <label
-                            className="d-block mb-1"
-                            htmlFor={`${asset.name}.you`}
-                          >
-                            {formData.preferredName}
-                          </label>
-                          {asset.tooltip && (
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip id={`tooltip-${asset.name}-you`}>
-                                  {asset.tooltip}
-                                </Tooltip>
-                              }
-                            >
-                              <span style={{marginTop:"11px",}} className="ms-2">
-                                <FaCircleInfo />
-                              </span>
-                            </OverlayTrigger>
-                          )}
-                        </div>
+                        <label
+                          className="d-block mb-1"
+                          htmlFor={`${asset.name}.you`}
+                        >
+                          {formData.preferredName}
+                        </label>
+
                         <Field
                           className={`form-control w-75 mx-auto mt-2`}
                           id={`${asset.name}.you`}
@@ -237,20 +242,7 @@ function FinancialAssets(props) {
                             >
                               {formData.partnerPreferredName}
                             </label>
-                            {asset.tooltip && (
-                              <OverlayTrigger
-                                placement="top"
-                                overlay={
-                                  <Tooltip id={`tooltip-${asset.name}-partner`}>
-                                    {asset.tooltip}
-                                  </Tooltip>
-                                }
-                              >
-                                <span className="ms-2">
-                                  <FaCircleInfo />{" "}
-                                </span>
-                              </OverlayTrigger>
-                            )}
+                            
                             <Field
                               className={`form-control w-75 mx-auto mt-2`}
                               id={`${asset.name}.partner`}
