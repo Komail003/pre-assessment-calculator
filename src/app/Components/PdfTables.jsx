@@ -321,7 +321,7 @@ const PdfTables = () => {
                   </td>
                   <td>
                     {toCommaAndDollar(incomeDetails.partnerEmploymentIncome) ||
-                      ""}
+                      "N/A"}
                   </td>
                 </tr>
                 <tr>
@@ -331,7 +331,7 @@ const PdfTables = () => {
                   </td>
                   <td>
                     {toCommaAndDollar(incomeDetails.partnerBusinessIncome) ||
-                      ""}
+                      "N/A"}
                   </td>
                 </tr>
                 <tr>
@@ -525,6 +525,11 @@ const PdfTables = () => {
               </td>
             </tr>
             <tr>
+              <td>Super</td>
+              <td>{toCommaAndDollar(financialAssets.super.you) || "N/A"}</td>
+              <td>{toCommaAndDollar(financialAssets.super.partner) || "N/A"}</td>
+            </tr>
+            <tr>
               <td>Shares/ETFS</td>
               <td>{toCommaAndDollar(financialAssets.shares.you) || "N/A"}</td>
               <td>{toCommaAndDollar(financialAssets.shares.partner) || "N/A"}</td>
@@ -538,16 +543,7 @@ const PdfTables = () => {
                 {toCommaAndDollar(financialAssets.managedFunds.partner) || "N/A"}
               </td>
             </tr>
-            <tr>
-              <td>Super</td>
-              <td>{toCommaAndDollar(financialAssets.super.you) || "N/A"}</td>
-              <td>{toCommaAndDollar(financialAssets.super.partner) || "N/A"}</td>
-            </tr>
-            <tr>
-              <td>Account Based Pension</td>
-              <td>{toCommaAndDollar(financialAssets.pension.you) || "N/A"}</td>
-              <td>{toCommaAndDollar(financialAssets.pension.partner) || "N/A"}</td>
-            </tr>
+          
           </tbody>
         </table>
       </div>
