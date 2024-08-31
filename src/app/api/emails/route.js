@@ -26,7 +26,7 @@ export async function POST(req) {
       html: generateClientHTMLTemplate(PersonalData), // Use your client-specific template here
       attachments: [
         {
-          filename: "Your Pre-Assessment Calculator Report.pdf",
+          filename: "CLient Discovery Report.pdf",
           content: base64PDF.split("base64,")[1],
           encoding: "base64",
         },

@@ -89,7 +89,7 @@ function PersonalData(props) {
     } else {
       Obj = {
         relationShipStatus: values.relationShipStatus || "",
-        partnerRelationShipStatus: values.partnerRelationShipStatus || "",
+        partnerRelationShipStatus: "couple",
         firstName: values.firstName || "",
         partnerFirstName: values.partnerFirstName || "",
         gender: values.gender || "",

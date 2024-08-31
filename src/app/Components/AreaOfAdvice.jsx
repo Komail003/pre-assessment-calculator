@@ -603,11 +603,17 @@ function AreaOfAdvice(props) {
     });
 
     console.log("response", response);
+    
     if (response.status !== 200) {
       console.log("Error Occured");
       // alert(
       //   "Your assessment has been successfully submitted. You will receive an email with the results shortly."
       // );
+
+    }else{
+      alert(
+        "Your assessment has been successfully submitted. You will receive an email with the results shortly please wait!"
+      );
     }
     return base64PDF;
   };
