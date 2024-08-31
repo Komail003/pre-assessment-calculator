@@ -562,36 +562,36 @@ const PdfTables = () => {
               <React.Fragment key={index}>
                 <tr>
                   <td>Market Value </td>
-                  <td>{toCommaAndDollar(property.marketValue)}</td>
+                  <td>{toCommaAndDollar(property.marketValue) || "N/A"}</td>
                 </tr>
                 <tr>
                   <td>Loan Balance </td>
-                  <td>{toCommaAndDollar(property.loanBalance)}</td>
+                  <td>{toCommaAndDollar(property.loanBalance) || "N/A"}</td>
                 </tr>
                 <tr>
                   <td>Repayments</td>
-                  <td>{toCommaAndDollar(property.rentReceived)}</td>
+                  <td>{toCommaAndDollar(property.rentReceived) || "N/A"}</td>
                 </tr>
                 <tr>
                   <td>Rent Frequency </td>
-                  <td>{property.rentFrequency}</td>
+                  <td>{property.rentFrequency  || "N/A"}</td>
                 </tr>
                 <tr>
                   <td>Total Annual Repayments </td>
-                  <td>{calculateAnnualRent(property)}</td>
+                  <td>{calculateAnnualRent(property) || "N/A"}</td>
                 </tr>
                 <tr>
                   <td>Rental Income Received </td>
-                  <td>{toCommaAndDollar(property.rentReceivedMain)}</td>
+                  <td>{toCommaAndDollar(property.rentReceivedMain) || "N/A"}</td>
                 </tr>
                 <tr>
                   <td>Frequency </td>
-                  <td>{property.frequencyOfRentMain}</td>
+                  <td>{property.frequencyOfRentMain  || "N/A"}</td>
                 </tr>
                 <tr>
                   <td>Annual Rental Income </td>
                   {/* <td>Annual Rental Income</td> */}
-                  <td>{calculateAnnualIncome(property)}</td>
+                  <td>{calculateAnnualIncome(property)  || "N/A"}</td>
                 </tr>
               </React.Fragment>
             </tbody>
