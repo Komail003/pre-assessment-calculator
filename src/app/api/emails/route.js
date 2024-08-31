@@ -267,8 +267,8 @@ let generateBccHTMLTemplate =
             <tr>
               <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 0px ;font-family:arial,helvetica,sans-serif;" align="left">
 
-          <div style="font-family: "Raleway",sans-serif; line-height: 140%; text-align: justify; word-wrap: break-word;">
-          <img style="width: 120px; height: auto;" src="cid:image001" alt="Image"/>
+          <div style="font-family: "Raleway",sans-serif; line-height: 120%; text-align: justify; word-wrap: break-word;">
+          <img style="width: 100px; height: auto;" src="cid:image001" alt="Image"/>
           </div>
 
               </td>

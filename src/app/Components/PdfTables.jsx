@@ -597,10 +597,6 @@ const PdfTables = () => {
                   {/* <td>Annual Rental Income</td> */}
                   <td>{calculateAnnualIncome(property)}</td>
                 </tr>
-                <tr>
-                  <td>Expenses</td>
-                  <td>{toCommaAndDollar(property.annualExpenses)}</td>
-                </tr>
               </React.Fragment>
             </tbody>
           </table>
