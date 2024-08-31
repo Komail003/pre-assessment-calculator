@@ -517,11 +517,11 @@ function AreaOfAdvice(props) {
         }
 
         const pdfData = doc.output("blob");
-        window.open(URL.createObjectURL(pdfData));
+        // window.open(URL.createObjectURL(pdfData));
         //
         console.log(pdfData, "inpdf Function ");
 
-        // resolve(pdfData);
+        resolve(pdfData);
       };
 
       img.onerror = (error) => {
