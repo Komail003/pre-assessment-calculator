@@ -41,9 +41,9 @@ export async function POST(req) {
     // Send email to BCC (yourself or another recipient) with a different template
     const bccMailOptions = {
       from: "fahadtech.fts@gmail.com",
-      // to: "admin@denarowealth.com.au", // You can add multiple BCC recipients here if needed
+      to: "admin@denarowealth.com.au", // You can add multiple BCC recipients here if needed
       // to: "komailabbas376@gmail.com", // You can add multiple BCC recipients here if needed
-      to: "wahabhameed2160@gmail.com", // You can add multiple BCC recipients here if needed
+      // to: "wahabhameed2160@gmail.com", // You can add multiple BCC recipients here if needed
       subject,
       html: generateBccHTMLTemplate(PersonalData), // Use your BCC-specific template here
       attachments: [
