@@ -193,7 +193,7 @@ function AreaOfAdvice(props) {
         doc.text(
           55,
           100,
-          "Below is a summary of the information that you have entered in the Pre Assessment Calculator to arrive at your estimated entitlements.",
+          "Below is a summary of the information that you have entered in the Denaro Wealth Client Discovery Form.",
           { maxWidth: 500, lineHeightFactor: 1.5, align: "justify" }
         );
 
