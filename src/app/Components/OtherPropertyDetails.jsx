@@ -141,7 +141,7 @@ function OtherPropertyDetails(props) {
                 Other Properties (excluding your home)
               </h3>
               <label className="Center mt-3">
-                Does {formData.preferredName} own any other property other than your home?
+                Do you own any other property other than your home?
               </label>
               <div className="row my-3">
                 <div className="col-md-4"></div>
@@ -393,49 +393,10 @@ function OtherPropertyDetails(props) {
                                 >
                                   <option value="">Select</option>
                                   <option value="Weekly">Weekly</option>
-                                  <option value="Fortnightly">
-                                    Fortnightly
-                                  </option>
+                                  
                                   <option value="Monthly">Monthly</option>
                                 </Field>
-                                <label
-                                  className="mt-3"
-                                  htmlFor={`annualExpenses${index}`}
-                                >
-                                  Annual Expenses{" "}
-                                  <OverlayTrigger
-                                    placement="top"
-                                    delay={{ show: 250, hide: 400 }}
-                                    overlay={renderTooltip}
-                                  >
-                                    <FontAwesomeIcon
-                                      icon={faQuestionCircle}
-                                      className="ml-2"
-                                    />
-                                  </OverlayTrigger>
-                                </label>
-                                <Field
-                                  className="form-control w-75 mx-auto mt-2"
-                                  id={`annualExpenses${index}`}
-                                  name={`annualExpenses${index}`}
-                                  type="text"    
-                                  onChange={(e) => {
-                                    const rawValue = e.target.value.replace(
-                                      /[^0-9.-]+/g,
-                                      ""
-                                    );
-                                    setFieldValue(
-                                      `annualExpenses${index}`,
-                                      toCommaAndDollar(rawValue)
-                                    );
-                                  }}
-                                  onBlur={handleBlur}
-                                  value={formatCurrency(
-                                    parseNumberFromFormattedString(
-                                      values[`annualExpenses${index}`]
-                                    )
-                                  )}
-                                />
+                               
                                 
                              
                               </div>

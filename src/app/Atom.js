@@ -75,9 +75,9 @@ export const childrenDetailsState = atom({
     key: "financialAssetsState",
     default: {
       bankAccounts: { you: "", partner: "" },
+      super: { you: "", partner: "" },
       shares: { you: "", partner: "" },
       managedFunds: { you: "", partner: "" },
-      super: { you: "", partner: "" },
       pension: { you: "", partner: "" },
     },
   });

@@ -217,43 +217,43 @@ const PdfTables = () => {
           <tbody>
             <tr>
               <td>First Name</td>
-              <td>{formData.firstName || ""}</td>
-              <td>{formData.partnerFirstName || ""}</td>
+              <td>{formData.firstName || "N/A"}</td>
+              <td>{formData.partnerFirstName || "N/A"}</td>
             </tr>
             <tr>
               <td>Surname</td>
-              <td>{formData.surName || ""}</td>
-              <td>{formData.partnerSurName || ""}</td>
+              <td>{formData.surName || "N/A"}</td>
+              <td>{formData.partnerSurName || "N/A"}</td>
             </tr>
             <tr>
               <td>Preferred Name</td>
-              <td>{formData.preferredName || ""}</td>
-              <td>{formData.partnerPreferredName || ""}</td>
+              <td>{formData.preferredName || "N/A"}</td>
+              <td>{formData.partnerPreferredName || "N/A"}</td>
             </tr>
             <tr>
               <td>DOB</td>
-              <td>{formatDateToAustralian(formData.DOB || "")}</td>
-              <td>{formatDateToAustralian(formData.partnerDOB || "")}</td>
+              <td>{formatDateToAustralian(formData.DOB) || "N/A"}</td>
+              <td>{formatDateToAustralian(formData.partnerDOB) || "N/A"}</td>
             </tr>
             <tr>
               <td>Email</td>
-              <td>{formData.email || ""}</td>
-              <td>{formData.partnerEmail || ""}</td>
+              <td>{formData.email || "N/A"}</td>
+              <td>{formData.partnerEmail || "N/A"}</td>
             </tr>
             <tr>
               <td>Phone Number</td>
-              <td>{formData.phoneNumber || ""}</td>
-              <td>{formData.partnerPhoneNumber || ""}</td>
+              <td>{formData.phoneNumber || "N/A"}</td>
+              <td>{formData.partnerPhoneNumber || "N/A"}</td>
             </tr>
             <tr>
               <td>Relationship Status</td>
-              <td>{formData.relationShipStatus || ""}</td>
-              <td>{formData.partnerRelationShipStatus || ""}</td>
+              <td>{formData.relationShipStatus || "N/A"}</td>
+              <td>{formData.partnerRelationShipStatus || "N/A"}</td>
             </tr>
             <tr>
               <td>Occupation</td>
-              <td>{formData.occupation || ""}</td>
-              <td>{formData.partnerOccupation || ""}</td>
+              <td>{formData.occupation || "N/A"}</td>
+              <td>{formData.partnerOccupation || "N/A"}</td>
             </tr>
           </tbody>
         </table>
@@ -274,12 +274,12 @@ const PdfTables = () => {
             childrenDetails.children.length > 0 ? (
               childrenDetails.children.map((child, index) => (
                 <tr key={index}>
-                  <td>{child.name || ""}</td>
-                  <td>{child.gender || ""}</td>
+                  <td>{child.name || "N/A"}</td>
+                  <td>{child.gender || "N/A"}</td>
                   <td>
                     {child.dob instanceof Date
                       ? formatDateToAustralian(child.dob)
-                      : formatDateToAustralian(child.dob) || ""}
+                      : formatDateToAustralian(child.dob) || "N/A"}
                   </td>
                 </tr>
               ))
@@ -317,7 +317,7 @@ const PdfTables = () => {
                 <tr>
                   <td>Employment Income</td>
                   <td>
-                    {toCommaAndDollar(incomeDetails.employmentIncome) || ""}
+                    {toCommaAndDollar(incomeDetails.employmentIncome) || "N/A"}
                   </td>
                   <td>
                     {toCommaAndDollar(incomeDetails.partnerEmploymentIncome) ||
@@ -327,7 +327,7 @@ const PdfTables = () => {
                 <tr>
                   <td>Business Income</td>
                   <td>
-                    {toCommaAndDollar(incomeDetails.businessIncome) || ""}
+                    {toCommaAndDollar(incomeDetails.businessIncome) || "N/A"}
                   </td>
                   <td>
                     {toCommaAndDollar(incomeDetails.partnerBusinessIncome) ||
@@ -339,12 +339,12 @@ const PdfTables = () => {
                   <td>
                     {toCommaAndDollar(
                       parseFloat(incomeDetails.centrelinkPayments) * 26
-                    ) || ""}
+                    ) || "N/A"}
                   </td>
                   <td>
                     {toCommaAndDollar(
                       parseFloat(incomeDetails.partnerCentrelinkPayments) * 26
-                    ) || ""}
+                    ) || "N/A"}
                     {/* {toCommaAndDollar(incomeDetails.partnerCentrelinkPayments) ||
                   ""} */}
                   </td>
@@ -352,12 +352,12 @@ const PdfTables = () => {
                 <tr>
                   <td>Super Pension Payments</td>
                   <td>
-                    {toCommaAndDollar(incomeDetails.superPensionPayments) || ""}
+                    {toCommaAndDollar(incomeDetails.superPensionPayments) || "N/A"}
                   </td>
                   <td>
                     {toCommaAndDollar(
                       incomeDetails.partnerSuperPensionPayments
-                    ) || ""}
+                    ) || "N/A"}
                   </td>
                 </tr>
               </>
@@ -382,19 +382,19 @@ const PdfTables = () => {
           <tbody>
             <tr>
               <td>Market Value</td>
-              <td>{toCommaAndDollar(propertyDetails.propertyValue) || ""}</td>
+              <td>{toCommaAndDollar(propertyDetails.propertyValue) || "N/A"}</td>
             </tr>
             <tr>
               <td>Loan Balance</td>
-              <td>{toCommaAndDollar(propertyDetails.loanBalance) || ""}</td>
+              <td>{toCommaAndDollar(propertyDetails.loanBalance) || "N/A"}</td>
             </tr>
             <tr>
               <td>Repayments</td>
-              <td>{toCommaAndDollar(propertyDetails.rentReceived) || ""}</td>
+              <td>{toCommaAndDollar(propertyDetails.rentReceived) || "N/A"}</td>
             </tr>
             <tr>
               <td>Frequency</td>
-              <td>{propertyDetails.rentOptions || ""}</td>
+              <td>{propertyDetails.rentOptions || "N/A"}</td>
             </tr>
             <tr>
               <td>Total Annual Repayments</td>
@@ -418,25 +418,25 @@ const PdfTables = () => {
           <tbody>
             <tr>
               <td>Cars</td>
-              <td>{toCommaAndDollar(personalAssets.husbandCars) || ""}</td>
-              <td>{toCommaAndDollar(personalAssets.partnerCars) || ""}</td>
+              <td>{toCommaAndDollar(personalAssets.husbandCars) || "N/A"}</td>
+              <td>{toCommaAndDollar(personalAssets.partnerCars) || "N/A"}</td>
             </tr>
             <tr>
               <td>Household Contents</td>
               <td colSpan={2}>
-                {toCommaAndDollar(personalAssets.husbandHousehold) || ""}
+                {toCommaAndDollar(personalAssets.husbandHousehold) || "N/A"}
               </td>
             </tr>
             <tr>
               <td>Boat</td>
               <td colSpan={2}>
-                {toCommaAndDollar(personalAssets.husbandBoat) || ""}
+                {toCommaAndDollar(personalAssets.husbandBoat) || "N/A"}
               </td>
             </tr>
             <tr>
               <td>Caravan</td>
               <td colSpan={2}>
-                {toCommaAndDollar(personalAssets.husbandCaravan) || ""}
+                {toCommaAndDollar(personalAssets.husbandCaravan) || "N/A"}
               </td>
             </tr>
           </tbody>
@@ -447,25 +447,25 @@ const PdfTables = () => {
         >
           <thead>
             <tr>
-              <th colSpan={2}>Credit Cards</th>
+              <th >Credit Cards</th>
+              <th >Client</th>
+              <th >Partner</th>
             </tr>
           </thead>
           <tbody>
             {personalAssets.creditCards == 0 &&
             !personalAssets.partnerCredit ? (
               <tr>
-                <td colSpan="2">No Credit card details available</td>
+                <td colSpan="3">No Credit card details available</td>
               </tr>
             ) : (
               <>
+                
                 <tr>
-                  <td>Client</td>
-                  <td>Partner</td>
-                </tr>
-                <tr>
-                  <td>{toCommaAndDollar(personalAssets.creditCards) || ""}</td>
+                  <td>Credit Card</td>
+                  <td>{toCommaAndDollar(personalAssets.creditCards) || "N/A"}</td>
                   <td>
-                    {toCommaAndDollar(personalAssets.partnerCredit) || ""}
+                    {toCommaAndDollar(personalAssets.partnerCredit) || "N/A"}
                   </td>
                 </tr>
               </>
@@ -479,25 +479,25 @@ const PdfTables = () => {
         >
           <thead>
             <tr>
-              <th colSpan={2}>Personal Loan</th>
+              <th >Personal Loan</th>
+              <th >Client</th>
+              <th >Partner</th>
             </tr>
           </thead>
           <tbody>
             {personalAssets.personelLoan == 0 &&
             !personalAssets.partnerPersonelLoan ? (
               <tr>
-                <td colSpan="2">No Personal loan details available</td>
+                <td colSpan="3">No Personal loan details available</td>
               </tr>
             ) : (
               <>
+              
                 <tr>
-                  <td>Client</td>
-                  <td>Partner</td>
-                </tr>
-                <tr>
-                  <td>{toCommaAndDollar(personalAssets.personelLoan || "")}</td>
+                  <td>Personal Loan</td>
+                  <td>{toCommaAndDollar(personalAssets.personelLoan) || "N/A"}</td>
                   <td>
-                    {toCommaAndDollar(personalAssets.partnerPersonelLoan || "")}
+                    {toCommaAndDollar(personalAssets.partnerPersonelLoan)|| "N/A"}
                   </td>
                 </tr>
               </>
@@ -518,35 +518,35 @@ const PdfTables = () => {
             <tr>
               <td>Money in Bank Accounts/Offset/Term Deposits</td>
               <td>
-                {toCommaAndDollar(financialAssets.bankAccounts.you || "")}
+                {toCommaAndDollar(financialAssets.bankAccounts.you) || "N/A"}
               </td>
               <td>
-                {toCommaAndDollar(financialAssets.bankAccounts.partner || "")}
+                {toCommaAndDollar(financialAssets.bankAccounts.partner) || "N/A"}
               </td>
             </tr>
             <tr>
               <td>Shares/ETFS</td>
-              <td>{toCommaAndDollar(financialAssets.shares.you || "")}</td>
-              <td>{toCommaAndDollar(financialAssets.shares.partner || "")}</td>
+              <td>{toCommaAndDollar(financialAssets.shares.you) || "N/A"}</td>
+              <td>{toCommaAndDollar(financialAssets.shares.partner) || "N/A"}</td>
             </tr>
             <tr>
               <td>Managed Funds</td>
               <td>
-                {toCommaAndDollar(financialAssets.managedFunds.you || "")}
+                {toCommaAndDollar(financialAssets.managedFunds.you) || "N/A"}
               </td>
               <td>
-                {toCommaAndDollar(financialAssets.managedFunds.partner || "")}
+                {toCommaAndDollar(financialAssets.managedFunds.partner) || "N/A"}
               </td>
             </tr>
             <tr>
               <td>Super</td>
-              <td>{toCommaAndDollar(financialAssets.super.you || "")}</td>
-              <td>{toCommaAndDollar(financialAssets.super.partner || "")}</td>
+              <td>{toCommaAndDollar(financialAssets.super.you) || "N/A"}</td>
+              <td>{toCommaAndDollar(financialAssets.super.partner) || "N/A"}</td>
             </tr>
             <tr>
               <td>Account Based Pension</td>
-              <td>{toCommaAndDollar(financialAssets.pension.you || "")}</td>
-              <td>{toCommaAndDollar(financialAssets.pension.partner || "")}</td>
+              <td>{toCommaAndDollar(financialAssets.pension.you) || "N/A"}</td>
+              <td>{toCommaAndDollar(financialAssets.pension.partner) || "N/A"}</td>
             </tr>
           </tbody>
         </table>

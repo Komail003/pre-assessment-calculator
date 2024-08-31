@@ -155,11 +155,11 @@ function AreaOfAdvice(props) {
           310,
           490,
           "Prepared for " +
-            formData.preferredName +
+            formData.preferredName + " "+formData.surName +
             " " +
             (formData?.partnerPreferredName !== undefined
-              ? "and " + formData.partnerPreferredName
-              : ""),
+              ? "and " + formData.partnerPreferredName + " " + formData.partnerSurName
+                            : ""),
           {
             maxWidth: 500,
             lineHeightFactor: 1.2,
@@ -585,7 +585,9 @@ function AreaOfAdvice(props) {
     // console.log("email sender", formData);
     let Data = JSON.stringify({
       to: formData.email,
-      subject: `Pre-Assessment Calculator Report (${formData.preferredName})`,
+      subject : `Online Client Discovery Form (${formData.firstName} ${formData.surName}${
+        formData.partnerFirstName ? ` and ${formData.partnerFirstName} ${formData.partnerSurName}` : ""
+      })`,
       text: "Please find the attached PDF document.",
       PersonalData: formData,
       base64PDF,

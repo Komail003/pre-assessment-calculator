@@ -29,12 +29,12 @@ const Homepage = () => {
         </span>
       </button>
       <br />
-        <label htmlFor="" className="mt-3 px-4">
+        <p htmlFor="" className="mt-3 px-4 fw-semibold" >
           Denaro Wealth Pty Ltd (ABN 23 625 686 464 is a Corporate Authorised
           Representative (ASIC No. 1263750) of Lifespan Financial Planning Pty
           Ltd (AFSL: 229892)
-        </label>
-      <div className="text-start">
+        </p>
+      <div className="text-center">
         <p className="mt-2">
           To ensure we fully understand your needs and goals, we’ve put together
           a short Client Discovery Form. Your responses will help us tailor our

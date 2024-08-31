@@ -48,7 +48,7 @@ function IncomeDetails(props) {
         "This includes income you receive from a business that you run as a sole trader or via partnership.",
     },
     {
-      name: "Centrelink Payments",
+      name: "Centrelink Payments (per fortnight)",
       clientField: "centrelinkPayments",
       partnerField: "partnerCentrelinkPayments",
       icon: (

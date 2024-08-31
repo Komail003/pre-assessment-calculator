@@ -33,6 +33,14 @@ function FinancialAssets(props) {
         ? toCommaAndDollar(financialAssets.bankAccounts.partner)
         : "",
     },
+    super: {
+      you: financialAssets.super?.you
+        ? toCommaAndDollar(financialAssets.super.you)
+        : "",
+      partner: financialAssets.super?.partner
+        ? toCommaAndDollar(financialAssets.super.partner)
+        : "",
+    },
     shares: {
       you: financialAssets.shares?.you
         ? toCommaAndDollar(financialAssets.shares.you)
@@ -49,14 +57,7 @@ function FinancialAssets(props) {
         ? toCommaAndDollar(financialAssets.managedFunds.partner)
         : "",
     },
-    super: {
-      you: financialAssets.super?.you
-        ? toCommaAndDollar(financialAssets.super.you)
-        : "",
-      partner: financialAssets.super?.partner
-        ? toCommaAndDollar(financialAssets.super.partner)
-        : "",
-    },
+   
     pension: {
       you: financialAssets.pension?.you
         ? toCommaAndDollar(financialAssets.pension.you)
@@ -134,21 +135,21 @@ function FinancialAssets(props) {
       icon: Bank,
       name: "bankAccounts",
     },
-    { label: "Shares/ETFS", icon: Portfolio, name: "shares" },
-    { label: "Managed Funds", icon: Fund, name: "managedFunds" },
     {
       label: "Super",
       icon: Piggybank,
       name: "super",
       tooltip: "This includes the total amount of all your super accounts.",
     },
-    {
-      label: "Account Based Pensions",
-      icon: Piggybank2,
-      name: "pension",
-      tooltip:
-        "This refers to money that you have with a super fund that you are receiving a regular payment from that is paid into your bank account.",
-    },
+    { label: "Shares/ETFS", icon: Portfolio, name: "shares" },
+    { label: "Managed Funds", icon: Fund, name: "managedFunds" },
+    // {
+    //   label: "Account Based Pensions",
+    //   icon: Piggybank2,
+    //   name: "pension",
+    //   tooltip:
+    //     "This refers to money that you have with a super fund that you are receiving a regular payment from that is paid into your bank account.",
+    // },
   ];
 
   const updateFieldValues = (setFieldValue) => {

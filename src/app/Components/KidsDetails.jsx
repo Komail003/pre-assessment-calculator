@@ -12,31 +12,31 @@ function KidsDetails(props) {
   const [childrenDetails, setChildrenDetails] =
     useRecoilState(childrenDetailsState);
   const children = [1, 2, 3, 4, 5];
-  const [placement, setPlacement] = useState('bottom');
+  const [placement, setPlacement] = useState("bottom");
 
   useEffect(() => {
     const updatePlacement = () => {
       if (window.innerWidth <= 768) {
-        setPlacement('bottom');
+        setPlacement("bottom");
       } else {
-        setPlacement('bottom');
+        setPlacement("bottom");
       }
     };
-     // Set initial placement
-     updatePlacement();
+    // Set initial placement
+    updatePlacement();
 
-     // Update placement on window resize
-     window.addEventListener('resize', updatePlacement);
- 
-     // Cleanup on component unmount
-     return () => window.removeEventListener('resize', updatePlacement);
-   }, []);
+    // Update placement on window resize
+    window.addEventListener("resize", updatePlacement);
+
+    // Cleanup on component unmount
+    return () => window.removeEventListener("resize", updatePlacement);
+  }, []);
 
   const initialValues = {
     anyKids: childrenDetails.anyKids,
     ...children.reduce((acc, child, index) => {
       acc[`nameOfChild${index + 1}`] = "";
-      acc[`genderOfChild${index + 1}`] = "Male"; // Set initial gender to Male
+      acc[`genderOfChild${index + 1}`] = ""; // Set initial gender to Male
       acc[`dOB${index + 1}`] = null; // Set the initial date of birth
       return acc;
     }, {}),
@@ -71,7 +71,7 @@ function KidsDetails(props) {
       setFieldValue("anyKids", data.anyKids || "");
       data.children.forEach((child, index) => {
         setFieldValue(`nameOfChild${index + 1}`, child.name || "");
-        setFieldValue(`genderOfChild${index + 1}`, child.gender || "Male");
+        setFieldValue(`genderOfChild${index + 1}`, child.gender || "");
         setFieldValue(`dOB${index + 1}`, new Date(child.dob) || null);
       });
     }
@@ -133,13 +133,9 @@ function KidsDetails(props) {
                       <table className="table table-bordered table-hover">
                         <thead className="text-center">
                           <tr>
-                            <th
-                              scope="col"
-                            >
-                              Childs Name
-                            </th>
-                            <th scope="col">DOB</th>
-                            <th scope="col">Gender</th>
+                            <th scope="col" style={{width:"40%",}}>Childs Name</th>
+                            <th scope="col" style={{width:"20%",}}>DOB</th>
+                            <th scope="col" style={{width:"40%",}}>Gender</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -147,7 +143,7 @@ function KidsDetails(props) {
                             // setFieldValue("genderOfChild" + (index + 1), "Male")
                             return (
                               <tr key={index}>
-                                <td>
+                                <td className="">
                                   <Field
                                     type="text"
                                     className="form-control"
@@ -156,10 +152,8 @@ function KidsDetails(props) {
                                     id={`nameOfChild${child}`}
                                   />
                                 </td>
-                                 <td>
-                                  <div
-                                   className="CalenderParent"
-                                  >
+                                <td className="w-25">
+                                  <div className="CalenderParent ">
                                     <DatePicker
                                       id={`dOB${child}`}
                                       className="form-control inputDesign"
@@ -170,12 +164,11 @@ function KidsDetails(props) {
                                       dateFormat="dd/MM/yyyy"
                                       placeholderText="dd/mm/yyyy"
                                       showYearDropdown
-                                      showPopperArrow={false} 
+                                      showPopperArrow={false}
                                       scrollableYearDropdown
                                       autoComplete="off"
                                       onBlur={handleBlur}
                                       name={`dOB${child}`}
-                                      
                                       maxDate={new Date()}
                                       showMonthDropdown
                                       tabIndex={1000}
@@ -192,27 +185,27 @@ function KidsDetails(props) {
                                         width: "100%", // Ensure the input takes the full width of its container
                                       }}
                                     />
-                                    <FaCalendarAlt
-                                    className="CalenderIcon"
-                                  
-                                    />
+                                    <FaCalendarAlt className="CalenderIcon" />
                                   </div>
                                 </td>
-                                
+
                                 <td className="tdmbl">
                                   <div className="d-flex justify-content-center  align-items-center">
                                     <div className="w-100">
-                                      <DynamicYesNo
-                                        setValue={{ left: "Female", Right: "Male" }}
+                                      <Field
+                                        as="select"
+                                        className="form-select"
                                         name={`genderOfChild${child}`}
-                                        label={{ left: "Female", Right: "Male" }}
-                                        values={values}
-                                        handleChange={handleChange}
-                                      />
+                                        id={`genderOfChild${child}`}
+                                      >
+                                        <option value="">Select</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                      </Field>
                                     </div>
                                   </div>
                                 </td>
-                                
                               </tr>
                             );
                           })}

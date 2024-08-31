@@ -17,7 +17,9 @@ import DynamicYesNo from "./DynamicYesNo/DynamicYesNo";
 import { useRouter, usePathname } from "next/navigation";
 
 function PersonalData(props) {
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
   const [renderBtn, setRenderBtn] = useState(false);
   const [formData, setFormData] = useRecoilState(personalDataState); // Using Recoil state
   // const [selectedDate, setSelectedDate] = useState(null);
@@ -32,19 +34,18 @@ function PersonalData(props) {
       setWindowWidth(window.innerWidth);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize(); // Set initial size
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     if (windowWidth < 768) {
       // alert('Screen size is below 768 pixels!');
       setRenderBtn(true);
-    }else{
+    } else {
       setRenderBtn(false);
-
     }
   }, [windowWidth]);
 
@@ -64,8 +65,8 @@ function PersonalData(props) {
     phoneNumber: "",
     partnerPhoneNumber: "",
     occupation: "",
-    gender: "Male",
-    partnerGender: "Male",
+    gender: "",
+    partnerGender: "",
     partnerOccupation: "",
   };
   const router = useRouter();
@@ -92,7 +93,7 @@ function PersonalData(props) {
         firstName: values.firstName || "",
         partnerFirstName: values.partnerFirstName || "",
         gender: values.gender || "",
-        partnerGender: values.partnerGender || "Male",
+        partnerGender: values.partnerGender || "",
         partnerFirstName: values.partnerFirstName || "",
         surName: values.surName || "",
         partnerSurName: values.partnerSurName || "",
@@ -127,7 +128,7 @@ function PersonalData(props) {
     setFieldValue("partnerSurName", data.partnerSurName || "");
     setFieldValue("preferredName", data.preferredName || "");
     setFieldValue("gender", data.gender || "");
-    setFieldValue("partnerGender", data?.partnerGender || "Male");
+    setFieldValue("partnerGender", data?.partnerGender || "");
     setFieldValue("partnerPreferredName", data.partnerPreferredName || "");
     setFieldValue("DOB", data.DOB || "");
     setFieldValue("partnerDOB", data.partnerDOB || "");
@@ -391,7 +392,7 @@ function PersonalData(props) {
                 )}
               </div>
               <div className="row mt-3">
-                <div className="col-md-4">
+                <div className="col-md-4 mb-3">
                   <label
                     htmlFor="email"
                     onClick={() => {
@@ -401,27 +402,35 @@ function PersonalData(props) {
                     Gender
                   </label>
                 </div>
-                <div className="col-md-4 Center">
-                  <div className="w-50 onMobile ">
-                    <DynamicYesNo
-                      setValue={{ left: "Female", Right: "Male" }}
+                <div className="col-md-4">
+                  <div className="">
+                    <Field
+                      as="select"
+                      className="form-select"
                       name={`gender`}
-                      label={{ left: "Female", Right: "Male" }}
-                      values={values}
-                      handleChange={handleChange}
-                    />
+                      id={`gender`}
+                    >
+                      <option value="">Select</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </Field>
                   </div>
                 </div>
                 {values.relationShipStatus == "single" || (
                   <div className="col-md-4 largeScrnPartnerForm ">
-                    <div className="w-50 onMobile mx-auto">
-                      <DynamicYesNo
-                        setValue={{ left: "Female", Right: "Male" }}
-                        name={`partnerGender`}
-                        label={{ left: "Female", Right: "Male" }}
-                        values={values}
-                        handleChange={handleChange}
-                      />
+                    <div className="">
+                    <Field
+                      as="select"
+                      className="form-select"
+                      name={`partnerGender`}
+                      id={`partnerGender`}
+                    >
+                      <option value="">Select</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </Field>
                     </div>
                   </div>
                 )}
@@ -619,24 +628,30 @@ function PersonalData(props) {
 
                 {values.relationShipStatus == "single" || (
                   <>
-                  {renderBtn?
-                  <>
-                    <div className="col-md-4">
-                      <label htmlFor="partnerGender">Gender</label>
-                    </div>
-                    <div className="col-md-4">
-                      <div className="w-50 mx-auto">
-                        <DynamicYesNo
-                          setValue={{ left: "Female", Right: "Male" }}
-                          name={`partnerGender`}
-                          label={{ left: "Female", Right: "Male" }}
-                          values={values}
-                          handleChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                  </>
-                    :""}
+                    {renderBtn ? (
+                      <>
+                        <div className="col-md-4 mb-3">
+                          <label htmlFor="partnerGender mb-4">Gender</label>
+                        </div>
+                        <div className="col-md-4">
+                          <div className="">
+                          <Field
+                      as="select"
+                      className="form-select"
+                      name={`partnerGender`}
+                      id={`partnerGender`}
+                    >
+                      <option value="">Select</option>
+                      <option value="Female">Female</option>
+                      <option value="Male">Male</option>
+                      <option value="Other">Other</option>
+                    </Field>
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      ""
+                    )}
                   </>
                 )}
 
