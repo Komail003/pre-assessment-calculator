@@ -398,7 +398,7 @@ const PdfTables = () => {
             </tr>
             <tr>
               <td>Total Annual Repayments</td>
-              <td>{calculateAnnualRepayments()}</td>
+              <td>{calculateAnnualRepayments() || "N/A"}</td>
             </tr>
           </tbody>
         </table>
