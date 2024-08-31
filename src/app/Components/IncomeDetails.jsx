@@ -48,7 +48,7 @@ function IncomeDetails(props) {
         "This includes income you receive from a business that you run as a sole trader or via partnership.",
     },
     {
-      name: "Centrelink Payments (per fortnight)",
+      name: "Centrelink Payments",
       clientField: "centrelinkPayments",
       partnerField: "partnerCentrelinkPayments",
       icon: (
@@ -153,7 +153,10 @@ function IncomeDetails(props) {
                       style={{ padding: "3rem 5rem 3rem 5rem" }}
                     >
                       <div className="Center">
-                        <h4 className="mb-3">{type.name}</h4>
+                        <h4 className="mb-3 ">{type.name}
+                        {type.name=="Centrelink Payments" ?<h4>(per fortnight)</h4>:""}
+                        </h4>
+                       
                         <OverlayTrigger
                           placement="top"
                           overlay={
