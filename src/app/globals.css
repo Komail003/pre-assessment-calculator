@@ -358,6 +358,7 @@ a.nav-link{
     height: 30px !important; /* Adjust size as needed */
     display: flex;
     align-items: center; /* Center vertically */
+    
     justify-content: center; /* Center horizontally */
     border-radius: 50%;
     background-color: gray; /* Default background color */
@@ -371,6 +372,7 @@ a.nav-link{
     top: 15px;
     /* transform: translateX(-50%); */
     width: 650%; 
+    
     z-index: -999;
     height: 3px; 
     background-color: transparent;
@@ -404,7 +406,7 @@ a.nav-link{
    .nav-link{
     padding-left: 0 !important;
     padding-right: 0 !important;
-    font-size: 6px !important;
+    font-size: 12px !important;
     width:25px !important;
   }
 }
@@ -424,7 +426,7 @@ a.nav-link{
   .nav-link{
     padding-left: 0 !important;
     padding-right: 0 !important;
-    font-size: 6px !important;
+    font-size: 9px !important;
     width:25px !important;
   }
   .navigation-bar .icon {

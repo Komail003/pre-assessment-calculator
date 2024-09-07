@@ -213,12 +213,12 @@ function PersonalData(props) {
           return (
             <Form>
               <div className="row">
-                <h2 className="Green fw-bold text-center mt-5">
+                <h2 className="Green fw-bold text-center mt-0 mt-md-5">
                   {/* ___________________ */}
                 </h2>
 
                 <div className="col-md-4 mt-3"></div>
-                <div className="col-md-4 mt-3 text-center">
+                <div className="col-md-4 mt-0 mt-sm-3 text-center">
                   <span className="fw-bold h5 ">Client </span>
                   <SingleIcon width={"20px"} className="mb-1" />
                 </div>
@@ -420,17 +420,17 @@ function PersonalData(props) {
                 {values.relationShipStatus == "single" || (
                   <div className="col-md-4 largeScrnPartnerForm ">
                     <div className="">
-                    <Field
-                      as="select"
-                      className="form-select"
-                      name={`partnerGender`}
-                      id={`partnerGender`}
-                    >
-                      <option value="">Select</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Other">Other</option>
-                    </Field>
+                      <Field
+                        as="select"
+                        className="form-select"
+                        name={`partnerGender`}
+                        id={`partnerGender`}
+                      >
+                        <option value="">Select</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                      </Field>
                     </div>
                   </div>
                 )}
@@ -635,17 +635,17 @@ function PersonalData(props) {
                         </div>
                         <div className="col-md-4">
                           <div className="">
-                          <Field
-                      as="select"
-                      className="form-select"
-                      name={`partnerGender`}
-                      id={`partnerGender`}
-                    >
-                      <option value="">Select</option>
-                      <option value="Female">Female</option>
-                      <option value="Male">Male</option>
-                      <option value="Other">Other</option>
-                    </Field>
+                            <Field
+                              as="select"
+                              className="form-select"
+                              name={`partnerGender`}
+                              id={`partnerGender`}
+                            >
+                              <option value="">Select</option>
+                              <option value="Female">Female</option>
+                              <option value="Male">Male</option>
+                              <option value="Other">Other</option>
+                            </Field>
                           </div>
                         </div>
                       </>
