@@ -155,7 +155,7 @@ function AreaOfAdvice(props) {
           310,
           490,
           "Prepared for " +
-            formData.preferredName + " "+formData.surName +
+            formData?.preferredName + " "+formData?.surName +
             " " +
             (formData?.partnerPreferredName !== undefined
               ? "and " + formData.partnerPreferredName + " " + formData.partnerSurName

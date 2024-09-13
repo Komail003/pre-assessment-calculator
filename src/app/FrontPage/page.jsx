@@ -30,7 +30,7 @@ const Homepage = () => {
       </button>
       <br />
         <p style={{fontSize:"13px"}} className="mt-3 px-4 fw-semibold" >
-          Denaro Wealth Pty Ltd (ABN 23 625 686 464 is a Corporate Authorised
+          Denaro Wealth Pty Ltd (ABN 23 625 686 464) is a Corporate Authorised
           Representative (ASIC No. 1263750) of Lifespan Financial Planning Pty
           Ltd (AFSL: 229892)
         </p>

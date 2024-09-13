@@ -45,19 +45,24 @@ function KidsDetails(props) {
   const router = useRouter();
   const onSubmit = (values) => {
     const kidsData = [];
-    for (let i = 1; i <= 5; i++) {
-      const name = values[`nameOfChild${i}`];
-      const gender = values[`genderOfChild${i}`];
-      const dob = values[`dOB${i}`];
 
-      if (name && gender && dob) {
-        kidsData.push({ name, gender, dob });
+
+    if (values.anyKids === "Yes") {
+      for (let i = 1; i <= 5; i++) {
+        const name = values[`nameOfChild${i}`];
+        const gender = values[`genderOfChild${i}`];
+        const dob = values[`dOB${i}`];
+
+        if (name && gender && dob) {
+          kidsData.push({ name, gender, dob });
+        }
       }
     }
 
     let obj = { anyKids: values.anyKids, children: kidsData };
     console.log(obj);
     setChildrenDetails(obj);
+
 
     sessionStorage.setItem("KidsDetails", JSON.stringify(obj));
     router.push("../IncomeDetails");
@@ -105,10 +110,12 @@ function KidsDetails(props) {
                     className="form-check-input"
                     id="anyKids1"
                     value="No"
-                    onChange={handleChange}
+                    onChange={(e) => { handleChange(e); sessionStorage.removeItem("KidsDetails"); }}
                     checked={values.anyKids === "No"}
                   />
-                  <label htmlFor="anyKids1" className="label1 Center">
+                  <label htmlFor="anyKids1" className="label1 Center"
+                    onClick={(e) => { sessionStorage.removeItem("KidsDetails"); }}
+                  >
                     <span>No</span>
                   </label>
                   <input
@@ -133,9 +140,9 @@ function KidsDetails(props) {
                       <table className="table table-bordered table-hover">
                         <thead className="text-center">
                           <tr>
-                            <th scope="col" style={{width:"40%",}}>Childs Name</th>
-                            <th scope="col" style={{width:"20%",}}>DOB</th>
-                            <th scope="col" style={{width:"40%",}}>Gender</th>
+                            <th scope="col" style={{ width: "40%", }}>Childs Name</th>
+                            <th scope="col" style={{ width: "20%", }}>DOB</th>
+                            <th scope="col" style={{ width: "40%", }}>Gender</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -190,7 +197,7 @@ function KidsDetails(props) {
                                 </td>
 
                                 <td className="tdmbl">
-                                  <div className="d-flex justify-content-center  align-items-center">
+                                  <div className="d-flex justify-content-center align-items-center">
                                     <div className="w-100">
                                       <Field
                                         as="select"

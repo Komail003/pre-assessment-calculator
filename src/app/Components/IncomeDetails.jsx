@@ -137,11 +137,13 @@ function IncomeDetails(props) {
         innerRef={props.FormReff}
       >
         {({ values, handleChange, setFieldValue }) => {
+
           useEffect(() => {
             if (sessionStorage.getItem("IncomeDetails")) {
               updateFieldValues(setFieldValue);
             }
           }, []);
+          
           return (
             <Form className="text-center">
               <div className="row justify-content-center">
@@ -154,25 +156,27 @@ function IncomeDetails(props) {
                     >
                       <div className="Center">
                         <h4 className="mb-3 ">{type.name}
-                        {type.name=="Centrelink Payments" ?<h4>(per fortnight)</h4>:""}
+                          {type.name == "Centrelink Payments" ? <br /> : ""}
+                          {type.name == "Centrelink Payments" ? `(per fortnight)` : ""}
+
+                          <OverlayTrigger
+                            placement="top"
+                            overlay={
+                              <Tooltip id={`tooltip-${type.clientField}`}>
+                                {type.tooltip}
+                              </Tooltip>
+                            }
+                          >
+                            <span>
+                              <FaCircleInfo
+                                size={16}
+                                style={{ marginTop: "5px 0px 0px 0px" }}
+                                className="ms-2"
+                              />
+                            </span>
+                          </OverlayTrigger>
                         </h4>
-                       
-                        <OverlayTrigger
-                          placement="top"
-                          overlay={
-                            <Tooltip id={`tooltip-${type.clientField}`}>
-                              {type.tooltip}
-                            </Tooltip>
-                          }
-                        >
-                          <span>
-                            <FaCircleInfo
-                              size={16}
-                              style={{ marginTop: "5px" }}
-                              className="ms-2"
-                            />
-                          </span>
-                        </OverlayTrigger>
+
                       </div>
                       {type.icon}
 
@@ -202,12 +206,12 @@ function IncomeDetails(props) {
 
                       {formData.relationShipStatus === "couple" && (
                         <>
-                            <label
-                              className="d-block mb-0"
-                              htmlFor={type.partnerField}
-                            >
-                              {formData.partnerPreferredName}
-                            </label>
+                          <label
+                            className="d-block mb-0"
+                            htmlFor={type.partnerField}
+                          >
+                            {formData.partnerPreferredName}
+                          </label>
                           <Field
                             className="form-control w-75 mx-auto mt-1"
                             id={type.partnerField}

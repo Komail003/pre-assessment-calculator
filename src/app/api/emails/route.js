@@ -1,17 +1,29 @@
 import nodemailer from "nodemailer";
 const path = require("path");
+// tim website taxlynk
+// let Refferal ="Taxlynk"; 
+let Refferal ="Denaro Wealth"; 
+
+
+
+
 
 export async function POST(req) {
+  // console.log(Refferal,"Refferal");
   try {
     // Parse the JSON body
     const { to, subject, PersonalData, base64PDF } = await req.json();
     console.log("PersonalData: ", PersonalData);
     // Set up Nodemailer transporter
     const transporter = nodemailer.createTransport({
-      service: "Gmail",
+      host: "mail.smtp2go.com",
+      // service: 'Outlook',
+      port:587,
+      // secure: false,
+      SMTPSecure : 'tls',
       auth: {
-        user: "fahadtech.fts@gmail.com",
-        pass: "szmb rvdp fuhg ydpb",
+        user: "calculators",
+        pass: "coZbTu9rfiEmlmFV",
       },
       tls: {
         rejectUnauthorized: false, // Bypass self-signed certificate error
@@ -20,13 +32,13 @@ export async function POST(req) {
 
     // Send email to the main recipient
     const clientMailOptions = {
-      from: "fahadtech.fts@gmail.com",
+      from: "calculators@denarowealth.com.au",
       to,
       subject,
       html: generateClientHTMLTemplate(PersonalData), // Use your client-specific template here
       attachments: [
         {
-          filename: "CLient Discovery Report.pdf",
+          filename: "Client Discovery Report.pdf",
           content: base64PDF.split("base64,")[1],
           encoding: "base64",
         },
@@ -40,9 +52,10 @@ export async function POST(req) {
 
     // Send email to BCC (yourself or another recipient) with a different template
     const bccMailOptions = {
-      from: "fahadtech.fts@gmail.com",
+      from: "calculators@denarowealth.com.au",
       to: "admin@denarowealth.com.au", // You can add multiple BCC recipients here if needed
       // to: "komailabbas376@gmail.com", // You can add multiple BCC recipients here if needed
+      // to: "usamasaeed3k@gmail.com", // You can add multiple BCC recipients here if needed
       // to: "wahabhameed2160@gmail.com", // You can add multiple BCC recipients here if needed
       subject,
       html: generateBccHTMLTemplate(PersonalData), // Use your BCC-specific template here
@@ -85,6 +98,7 @@ export async function POST(req) {
 }
 
 let generateBccHTMLTemplate =
+
   (PersonalData) => ` <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
         <head>
@@ -200,7 +214,7 @@ let generateBccHTMLTemplate =
               <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 0px;font-family:arial,helvetica,sans-serif;" align="left">
 
           <div style="font-family: "Raleway",sans-serif; line-height: 140%; text-align: justify; word-wrap: break-word;">
-            <p style="line-height: 140%;text-align: justify;">We have received a completed Online Discovery Form  for <strong> ${PersonalData.preferredName} ${PersonalData.partnerPreferredName? ` and ${PersonalData.partnerPreferredName}`:``} </strong> through our website.  Attached is a copy of their  results.  The clients details are as follows:</p>
+            <p style="line-height: 140%;text-align: justify;">We have received a completed Online Discovery Form  for <strong> ${PersonalData.preferredName} ${PersonalData.partnerPreferredName? ` and ${PersonalData.partnerPreferredName}`:``} </strong> originated from <strong>${Refferal}</strong> through our website.  Attached is a copy of their  results.  The clients details are as follows:</p>
           </div>
 
               </td>
@@ -311,6 +325,7 @@ let generateBccHTMLTemplate =
 
           <div style="font-family: "Raleway",sans-serif; font-size: 9px; line-height: 140%; text-align: justify; word-wrap: break-word;">
             <p style="line-height: 140%; font-size: 9px;">Ground Floor, Corporate One, 84 Hotham Street, Preston VIC 3072.</p>
+        
           </div>
 
               </td>

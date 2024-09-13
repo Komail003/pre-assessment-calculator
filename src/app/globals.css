@@ -1,11 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-*{
+* {
   font-family: "Poppins", sans-serif !important;
-  
 }
-.frontPage{
+.frontPage {
   font-family: "Montserrat", sans-serif !important;
   /* font-family: "Poppins", sans-serif !important; */
 }
@@ -21,6 +20,7 @@
   border-radius: 0px !important;
   border: 2px solid #36b446 !important;
   box-shadow: none !important;
+  padding: 8px 8px 8px 8px !important;
 }
 label,
 h6 {
@@ -200,7 +200,7 @@ input[type="number"] {
 
   overflow-x: hidden;
 }
-a.nav-link{
+a.nav-link {
   padding-left: 0;
   padding-right: 0;
 }
@@ -223,14 +223,14 @@ a.nav-link{
 }
 
 .navigation-bar .icon-container::before {
-  content: '';
+  content: "";
   position: absolute;
   left: -200%;
   top: 20px;
   /* transform: translateX(-50%); */
-  width: 550%; 
+  width: 550%;
   z-index: -999;
-  height: 3px; 
+  height: 3px;
   background-color: transparent;
   transition: background-color 0.3s ease;
   overflow: hidden !important;
@@ -263,7 +263,7 @@ a.nav-link{
   color: #36b446 !important;
   text-decoration: none;
 }
-.nav-link{
+.nav-link {
   width: 70px !important;
 }
 .navigation-bar .nav-item.active .nav-link {
@@ -271,13 +271,10 @@ a.nav-link{
   font-weight: bold;
 }
 
-
-
-
 @media only screen and (min-width: 1000px) {
-  .nav-link{
+  .nav-link {
     width: 90px !important;
-  }  
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -293,7 +290,7 @@ a.nav-link{
     height: 200px;
     max-height: 250px;
   }
- 
+
   .businessimg {
     width: 75px !important;
     height: 75px !important;
@@ -307,9 +304,10 @@ a.nav-link{
     height: 65px !important;
   }
   .form-control {
-    margin-top: 20px;
+    /* margin-top: 20px; */
     /* margin-bottom: 15px; */
   }
+
   .navigation-buttons {
     display: flex;
     justify-content: center;
@@ -338,7 +336,7 @@ a.nav-link{
   }
   .CalenderIcon {
     position: absolute;
-    top: 33px !important;
+    top: 13px !important;
     right: 10px;
     pointerevents: none;
     color: #36b446;
@@ -358,7 +356,6 @@ a.nav-link{
     height: 30px !important; /* Adjust size as needed */
     display: flex;
     align-items: center; /* Center vertically */
-    
     justify-content: center; /* Center horizontally */
     border-radius: 50%;
     background-color: gray; /* Default background color */
@@ -366,24 +363,23 @@ a.nav-link{
     position: relative; /* Position relative for the line positioning */
   }
   .navigation-bar .icon-container::before {
-    content: '';
+    content: "";
     position: absolute;
     left: -200%;
     top: 15px;
     /* transform: translateX(-50%); */
-    width: 650%; 
-    
+    width: 650%;
     z-index: -999;
-    height: 3px; 
+    height: 3px;
     background-color: transparent;
     transition: background-color 0.3s ease;
     overflow: hidden !important;
   }
-  .nav-link{
+  .nav-link {
     padding-left: 0 !important;
     padding-right: 0 !important;
     font-size: 12px !important;
-    width:50px !important;
+    width: 50px !important;
   }
 }
 @media only screen and (max-width: 455px) {
@@ -396,18 +392,18 @@ a.nav-link{
     width: 100%;
     overflow-x: hidden;
     justify-content: space-evenly !important;
-}
+  }
   .goal-item {
     max-width: 160px !important;
     width: 160px !important;
     height: 195px !important;
     max-height: 195px !important;
   }
-   .nav-link{
+  .nav-link {
     padding-left: 0 !important;
     padding-right: 0 !important;
-    font-size: 12px !important;
-    width:25px !important;
+    font-size: 6px !important;
+    width: 25px !important;
   }
 }
 @media only screen and (max-width: 375px) {
@@ -423,19 +419,18 @@ a.nav-link{
     padding-top: 3px !important;
     padding-bottom: 3px !important;
   }
-  .nav-link{
+  .nav-link {
     padding-left: 0 !important;
     padding-right: 0 !important;
-    font-size: 9px !important;
-    width:25px !important;
+    font-size: 6px !important;
+    width: 25px !important;
   }
   .navigation-bar .icon {
     color: white;
     height: 14px !important;
     width: 14px !important;
+  }
 }
-}
-
 
 .CoupleSelected {
   height: 45px;
@@ -489,5 +484,3 @@ a.nav-link{
     text-decoration: none;
     color: #36b446;
     } */
-
-    
